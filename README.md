@@ -48,3 +48,5 @@ Status
 - Empirical search (overnight, n≤28): zero counterexamples
 - Lean skeleton in place; final inequality proof pending
 - Tagged: cyclone-provisional-v1
+
+Status: Cyclone terminal obstruction closed (LASR proved; Lean boundary isolated)
