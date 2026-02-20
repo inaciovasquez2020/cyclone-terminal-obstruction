@@ -1,0 +1,142 @@
+{
+  "claims": [
+    "Computed overlap matrix rank ovrank_Rstar over F2",
+    "Computed corank_Rstar as max local restricted-cycle rank over F2",
+    "WL1 proxy homogeneity flag recorded"
+  ],
+  "computed": {
+    "corank_Rstar": 9,
+    "cycle_rank": 10,
+    "overlap_matrix_shape": [
+      10,
+      10
+    ],
+    "ovrank_Rstar": 5,
+    "wl1_homogeneous_proxy": true
+  },
+  "graph": {
+    "edges": [
+      [
+        12,
+        13
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        0,
+        17
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        0,
+        15
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        14
+      ]
+    ],
+    "n": 18
+  },
+  "meta": {
+    "created_utc": "2026-02-20T16:38:19.003334Z",
+    "id": "CYCLONE_CAND_18_3_4_2_1",
+    "tool_version": "tools/cyclone/overlap_rank.py:v1"
+  },
+  "params": {
+    "Delta": 3,
+    "Rstar": 2,
+    "equivalence_proxy": "WL1_homogeneity_on_r_rounds",
+    "k": 4,
+    "r": 2
+  }
+}

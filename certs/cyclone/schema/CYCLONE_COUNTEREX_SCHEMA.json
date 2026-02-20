@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CYCLONE_COUNTEREX_SCHEMA",
+  "type": "object",
+  "required": ["meta", "params", "graph", "computed", "claims"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["id", "created_utc", "tool_version"],
+      "properties": {
+        "id": {"type": "string"},
+        "created_utc": {"type": "string"},
+        "tool_version": {"type": "string"}
+      }
+    },
+    "params": {
+      "type": "object",
+      "required": ["Delta", "k", "r", "Rstar", "equivalence_proxy"],
+      "properties": {
+        "Delta": {"type": "integer", "minimum": 0},
+        "k": {"type": "integer", "minimum": 0},
+        "r": {"type": "integer", "minimum": 0},
+        "Rstar": {"type": "integer", "minimum": 0},
+        "equivalence_proxy": {"type": "string"}
+      }
+    },
+    "graph": {
+      "type": "object",
+      "required": ["n", "edges"],
+      "properties": {
+        "n": {"type": "integer", "minimum": 0},
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "computed": {
+      "type": "object",
+      "required": ["cycle_rank", "ovrank_Rstar", "corank_Rstar", "overlap_matrix_shape"],
+      "properties": {
+        "cycle_rank": {"type": "integer", "minimum": 0},
+        "ovrank_Rstar": {"type": "integer", "minimum": 0},
+        "corank_Rstar": {"type": "integer", "minimum": 0},
+        "overlap_matrix_shape": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}
