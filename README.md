@@ -49,7 +49,7 @@ Status
 - Lean skeleton in place; final inequality proof pending
 - Tagged: cyclone-provisional-v1
 
-Status: Cyclone terminal obstruction closed (LASR proved; Lean boundary isolated)
+Status: Cyclone terminal obstruction closed up to BoxedLASR interface axioms
 
 ## Lean status
-All definitions and reductions are fully formalized. Remaining assumptions are isolated in  as explicit interface axioms.
+All definitions and reductions are fully formalized. Remaining assumptions are isolated as explicit interface axioms in lean/URF/Cyclone/Interfaces/BoxedLASR.lean. Full closure requires replacing LocalDuplicatorWins → ∃ PartialIso and localData_invariant with theorems.
