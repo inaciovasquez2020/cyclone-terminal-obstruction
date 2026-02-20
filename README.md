@@ -18,3 +18,19 @@ Status
 - Wrapper repository
 - Intended for buyer diligence mapping and licensing packaging
 
+## bom-v1.1 freeze notes
+
+- Small-graph + pebble-game solver as falsifier search
+- Overlap-rank enumeration via explicit cycle bases
+- Empirical target: B0 < 200
+- Status: frozen; awaiting external signal
+
+### Status (bom-v1.2)
+
+Core obstruction (BOM / Cyclone) is structural, Lean-formalized, and actively stress-tested.
+Automated falsification hooks exist for:
+- small-graph EF-game locality,
+- overlap-rank enumeration on expanders,
+- kernel CPD₁ verification.
+
+No counterexamples are currently known.
