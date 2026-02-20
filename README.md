@@ -41,3 +41,10 @@ This repository is designed to fail loudly if the obstruction is false.
 All other repositories in the URF / Chronos ecosystem exist to either reduce to Cyclone or attempt to falsify it.
 
 Cyclone is the wall, not the proof.
+
+Status
+- Cyclone obstruction: provisionally closed
+- LASR-only route selected
+- Empirical search (overnight, n≤28): zero counterexamples
+- Lean skeleton in place; final inequality proof pending
+- Tagged: cyclone-provisional-v1
