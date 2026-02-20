@@ -21,3 +21,9 @@ Final status
 - Zero counterexamples found
 - ovrank_R* ≤ corank_R*^2 empirically validated
 - Cyclone treated as provisionally closed
+
+Final status
+- Overnight search completed
+- Zero counterexamples found
+- ovrank_R* ≤ corank_R*^2 empirically validated
+- Cyclone treated as provisionally closed
