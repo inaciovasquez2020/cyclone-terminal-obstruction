@@ -10,6 +10,11 @@ axiom Boxed :
     G ≡conf[k,r] G →
     corank⋆ (Δ:=Δ) (k:=k) (r:=r) G ≤ B0 Δ k r
 
+axiom ovrank_le_corank_sq :
+  ∀ (G : Graph),
+    ovrank⋆ (Δ:=Δ) (k:=k) (r:=r) G ≤
+    (corank⋆ (Δ:=Δ) (k:=k) (r:=r) G) ^ 2
+
 theorem Cyclone :
   ∀ (G : Graph),
     deg G ≤ Δ →
