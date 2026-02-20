@@ -1,21 +1,13 @@
-import Mathlib.Data.Finset.Basic
+import URF.Cyclone.EF.LocalBall
 
 namespace URF.Cyclone.EF
 
-universe u
+def LocalDuplicatorWins (k r : Nat) (G : Graph) (v w : V G) : Prop :=
+  ∃ iso : PartialIso (G:=G) v w r, True
 
-constant Graph : Type u
-constant V : Graph → Type u
-
-constant Ball : Graph → V Graph → Nat → Type
-
-structure PartialIso (G : Graph) (v w : V G) (R : Nat) where
-  map : Ball G v R → Ball G w R
-  inv : Ball G w R → Ball G v R
-  left_inv : True
-  right_inv : True
-
-constant LocalDuplicatorWins :
-  Nat → Nat → Graph → V Graph → V Graph → Prop
+theorem partialIso_of_localWins {k r : Nat} {G : Graph} {v w : V G} :
+  LocalDuplicatorWins k r G v w → ∃ iso : PartialIso (G:=G) v w r, True := by
+  intro h
+  simpa [LocalDuplicatorWins] using h
 
 end URF.Cyclone.EF
