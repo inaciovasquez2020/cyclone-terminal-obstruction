@@ -23,7 +23,7 @@ theorem LASR_transport :
     localData G v = localData G w := by
   intro G v w hdeg hhom
   have hw : LocalDuplicatorWins k r G v w := hhom v w
-  rcases URF.Cyclone.EF.LocalWins_to_PartialIso (k:=k) (r:=r) (G:=G) (v:=v) (w:=w) hw with ⟨iso, _⟩
+  rcases URF.Cyclone.EF.partialIso_of_LocalDuplicatorWins _ _ _
   exact localData_invariant G v w iso
 
 end URF.Cyclone
