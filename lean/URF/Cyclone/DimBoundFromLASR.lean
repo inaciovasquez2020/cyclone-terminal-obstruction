@@ -1,3 +1,4 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import URF.Cyclone.LASRSelector
 import URF.Cyclone.OverlapIneq
 
@@ -10,7 +11,6 @@ constant BuildOverlapModel :
     corank⋆ (Δ:=Δ) (k:=k) (r:=r) G →
     OverlapModel
 
-axiom dim_bound_from_LASR :
   ∀ (G : Graph),
     deg G ≤ Δ →
     Hom[k,r] G →

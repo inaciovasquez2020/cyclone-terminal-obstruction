@@ -1,3 +1,4 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Nat.Basic
 
@@ -22,7 +23,6 @@ def corank⋆ (G : Graph) : Nat := corankR Rstar G
 constant FOkConfHom : Graph → Nat → Nat → Prop
 notation "Hom[" k "," r "]" G => FOkConfHom G k r
 
-axiom LASR_witness_selector :
   ∀ (G : Graph),
     deg G ≤ Δ →
     Hom[k,r] G →

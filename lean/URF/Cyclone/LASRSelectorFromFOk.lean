@@ -1,10 +1,10 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import URF.Cyclone.LASRSelector
 import URF.Cyclone.LASRTransport
 import URF.Cyclone.FOkToLocalHom
 
 namespace URF.Cyclone
 
-axiom Hom_eq_FOkHom :
   ∀ (G : Graph), Hom[k,r] G ↔ FOkHom (k:=k) (r:=r) G
 
 theorem LASR_selector_from_FOkHom (G : Graph)

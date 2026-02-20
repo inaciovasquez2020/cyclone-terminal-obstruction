@@ -1,3 +1,4 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import URF.Cyclone.EF.LocalGame
 import URF.Cyclone.FOkLocal
 
@@ -11,7 +12,6 @@ constant deg : Graph → Nat
 constant LocalData : Graph → Nat → Type
 constant localData : ∀ (G : Graph), V G → LocalData G r
 
-axiom localData_invariant :
   ∀ (G : Graph) (v w : V G),
     ∀ (iso : PartialIso (G:=G) v w r),
       localData G v = localData G w

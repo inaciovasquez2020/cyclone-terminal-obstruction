@@ -1,23 +1,21 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import URF.Cyclone.LASRSelector
 
 namespace URF.Cyclone
 
 constant TypesBound : Nat → Nat → Nat → Nat
 
-axiom finite_types_bound :
   ∀ (G : Graph),
     deg G ≤ Δ →
     Hom[k,r] G →
     True →
     True
 
-axiom lasr_boxed_inequality :
   ∀ (G : Graph),
     deg G ≤ Δ →
     Hom[k,r] G →
     TypesBound Δ k r ≤ corank⋆ (Δ:=Δ) (k:=k) (r:=r) G
 
-axiom LASR_from_boxed :
   ∀ (G : Graph),
     deg G ≤ Δ →
     Hom[k,r] G →

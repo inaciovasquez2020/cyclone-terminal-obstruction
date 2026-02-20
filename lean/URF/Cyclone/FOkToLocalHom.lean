@@ -1,3 +1,4 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import URF.Cyclone.LASRSelector
 import URF.Cyclone.EF.LocalGame
 
@@ -10,7 +11,6 @@ def FOkHom (G : Graph) : Prop := FOkConfEq k r G G
 def FOkLocalHom (G : Graph) : Prop :=
   ∀ (v w : V G), LocalDuplicatorWins k r G v w
 
-axiom FOkHom_implies_localHom :
   ∀ (G : Graph),
     FOkHom (k:=k) (r:=r) G →
     FOkLocalHom (k:=k) (r:=r) G

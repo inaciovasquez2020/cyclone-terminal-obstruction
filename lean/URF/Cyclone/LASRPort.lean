@@ -1,9 +1,9 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import URF.Cyclone.LASRSelector
 import URF.Cyclone.LASRTransport
 
 namespace URF.Cyclone
 
-axiom LASR_selector_from_transport :
   ∀ (G : Graph),
     deg G ≤ Δ →
     Hom[k,r] G →

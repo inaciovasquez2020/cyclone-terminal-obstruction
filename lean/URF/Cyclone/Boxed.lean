@@ -1,16 +1,15 @@
+import URF.Cyclone.Interfaces.BoxedLASRnopen URF.Cyclone.Interfacesn
 import URF.Cyclone.Defs
 
 namespace URF.Cyclone
 
 constant B0 : Nat → Nat → Nat → Nat
 
-axiom Boxed :
   ∀ (G : Graph),
     deg G ≤ Δ →
     G ≡conf[k,r] G →
     corank⋆ (Δ:=Δ) (k:=k) (r:=r) G ≤ B0 Δ k r
 
-axiom ovrank_le_corank_sq :
   ∀ (G : Graph),
     ovrank⋆ (Δ:=Δ) (k:=k) (r:=r) G ≤
     (corank⋆ (Δ:=Δ) (k:=k) (r:=r) G) ^ 2
