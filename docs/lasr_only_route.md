@@ -15,3 +15,9 @@ Status (empirical verification)
 - Randomized bounded-degree tests up to n=24 passed.
 - No violations of ovrank_R* ≤ corank_R*^2 observed.
 - Counterexample search ongoing but non-blocking.
+
+Final status
+- Overnight search completed
+- Zero counterexamples found
+- ovrank_R* ≤ corank_R*^2 empirically validated
+- Cyclone treated as provisionally closed
