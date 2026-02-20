@@ -50,3 +50,6 @@ Status
 - Tagged: cyclone-provisional-v1
 
 Status: Cyclone terminal obstruction closed (LASR proved; Lean boundary isolated)
+
+## Lean status
+All definitions and reductions are fully formalized. Remaining assumptions are isolated in  as explicit interface axioms.
