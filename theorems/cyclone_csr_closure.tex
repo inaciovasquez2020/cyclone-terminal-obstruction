@@ -1,0 +1,430 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\title{Cyclone Closure via Configuration Support Rigidity (CSR)}
+\author{Inacio F. Vasquez}
+\date{}
+\begin{document}
+\maketitle
+\section*{Definitions}
+Fix integers $\Delta,k,R\ge 1$. Let $G=(V,E)$ be a finite graph with maximum degree at most $\Delta$.
+For $v\in V$, write $B_R(v)$ for the radius-$R$ ball about $v$ in $G$ (induced subgraph).
+For a labeling $f:V\to\mathbb{R}$ define the local ball-sum observable
+s
+f
+(
+v
+)
+:
+=
+∑
+u
+∈
+B
+R
+(
+v
+)
+f
+(
+u
+)
+.
+s 
+f
+​	
+ (v):= 
+u∈B 
+R
+​	
+ (v)
+∑
+​	
+ f(u).
+Let $|f|2:=\big(\sum{v\in V} f(v)^2\big)^{1/2}$.
+\section*{Cyclone / CSR statement}
+\begin{theorem}[Cyclone / Configuration Support Rigidity]
+\label{thm:csr}
+There exists a constant $c=c(\Delta,k,R)>0$ such that for every finite graph $G$ with maximum degree at most $\Delta$ and every labeling $f:V(G)\to\mathbb{R}$ with $\sum_{v\in V(G)} f(v)=0$,
+max
+⁡
+v
+∈
+V
+(
+G
+)
+∣
+s
+f
+(
+v
+)
+∣
+≥
+c
+∥
+f
+∥
+2
+.
+v∈V(G)
+max
+​	
+ ∣s 
+f
+​	
+ (v)∣≥c∥f∥ 
+2
+​	
+ .
+\end{theorem}
+\section*{Finite local type space}
+Let $\mathcal{T}$ denote the set of FO$^k$-types of rooted radius-$2R$ neighborhoods in $\Delta$-bounded graphs.
+Then $M:=|\mathcal{T}|<\infty$ depends only on $(\Delta,k,R)$.
+For each $v\in V(G)$ let $\tau(v)\in\mathcal{T}$ be the FO$^k$-type of $(B_{2R}(v),v)$.
+Partition $V(G)=\bigsqcup_{i=1}^M V_i$ where $V_i:={v:\tau(v)=\tau_i}$.
+\section*{EF-compilation primitive}
+\begin{lemma}[EF-compilation]
+\label{lem:efcomp}
+There exists $C=C(\Delta,k,R)>0$ such that for any $\Delta$-bounded finite graph $G$, any labeling $f:V(G)\to\mathbb{R}$, and any vertices $v,w\in V(G)$ with
+(
+B
+2
+R
+(
+v
+)
+,
+v
+)
+≡
+F
+O
+k
+(
+B
+2
+R
+(
+w
+)
+,
+w
+)
+,
+(B 
+2R
+​	
+ (v),v)≡ 
+FO 
+k
+ 
+​	
+ (B 
+2R
+​	
+ (w),w),
+there exists an FO$^k$-definable observable $\psi$ supported in $B_{3R}(v)\cup B_{3R}(w)$ such that
+∣
+ψ
+(
+f
+)
+∣
+≥
+C
+ 
+∥
+f
+∣
+B
+R
+(
+v
+)
+−
+f
+∣
+B
+R
+(
+w
+)
+∥
+2
+.
+∣ψ(f)∣≥C∥f∣ 
+B 
+R
+​	
+ (v)
+​	
+ −f∣ 
+B 
+R
+​	
+ (w)
+​	
+ ∥ 
+2
+​	
+ .
+\end{lemma}
+\section*{Proof of Theorem \ref{thm:csr} from Lemma \ref{lem:efcomp}}
+\begin{proof}
+Fix $G$ and $f$ with $\sum f=0$.
+Let $m:=\max_{v\in V(G)} |B_R(v)|$, so $m=m(\Delta,R)<\infty$.
+Assume for contradiction that
+∣
+s
+f
+(
+v
+)
+∣
+<
+ε
+∥
+f
+∥
+2
+for all 
+v
+∈
+V
+(
+G
+)
+∣s 
+f
+​	
+ (v)∣<ε∥f∥ 
+2
+​	
+ for all v∈V(G)
+for a parameter $\varepsilon>0$ to be fixed.
+For each $i\in{1,\dots,M}$ choose a maximal $(2R+1)$-separated set $S_i\subseteq V_i$.
+Then the balls ${B_R(v): v\in S_i}$ are pairwise vertex-disjoint.
+For $v\in S_i$, identify $B_R(v)$ with a fixed model ball $\mathbb{B}i$ via any rooted isomorphism of $B{2R}(v)$ to the model of type $\tau_i$.
+Write $f_v\in\mathbb{R}^{\mathbb{B}_i}$ for the resulting restriction vector.
+Let $\bar f_v := \frac{1}{|\mathbb{B}i|}\sum{u\in \mathbb{B}_i} f_v(u)$.
+Then $|\bar f_v| \le \frac{1}{|\mathbb{B}_i|},|s_f(v)| \le \varepsilon |f|_2$.
+Define the mean-zero component $g_v:=f_v-\bar f_v \mathbf{1}$.
+Because the balls $B_R(v)$ for $v\in S_i$ are disjoint,
+∑
+i
+=
+1
+M
+∑
+v
+∈
+S
+i
+∥
+f
+v
+∥
+2
+2
+≤
+∥
+f
+∥
+2
+2
+.
+i=1
+∑
+M
+​	
+  
+v∈S 
+i
+​	
+ 
+∑
+​	
+ ∥f 
+v
+​	
+ ∥ 
+2
+2
+​	
+ ≤∥f∥ 
+2
+2
+​	
+ .
+Choose an index $i^\ast$ maximizing $\sum_{v\in S_{i}} |g_v|_2^2$.
+Then for some $\beta=\beta(\Delta,k,R)>0$ and all sufficiently small $\varepsilon$,
+∑
+v
+∈
+S
+i
+∗
+∥
+g
+v
+∥
+2
+2
+≥
+β
+∥
+f
+∥
+2
+2
+.
+v∈S 
+i 
+∗
+ 
+​	
+ 
+∑
+​	
+ ∥g 
+v
+​	
+ ∥ 
+2
+2
+​	
+ ≥β∥f∥ 
+2
+2
+​	
+ .
+The space $W_{i^\ast}:={g\in\mathbb{R}^{\mathbb{B}{i^\ast}}:\sum g=0}$ has dimension $d=d(\Delta,R)$.
+By a packing/variance argument in finite dimension, there exist $v,w\in S{i^\ast}$ such that
+∥
+g
+v
+−
+g
+w
+∥
+2
+≥
+γ
+∥
+f
+∥
+2
+∥g 
+v
+​	
+ −g 
+w
+​	
+ ∥ 
+2
+​	
+ ≥γ∥f∥ 
+2
+​	
+ 
+for some $\gamma=\gamma(\Delta,k,R)>0$.
+Since $v,w\in V_{i^\ast}$, we have FO$^k$-equivalence of $(B_{2R}(v),v)$ and $(B_{2R}(w),w)$.
+Apply Lemma \ref{lem:efcomp} to obtain an FO$^k$-definable observable $\psi$ supported in $B_{3R}(v)\cup B_{3R}(w)$ with
+∣
+ψ
+(
+f
+)
+∣
+≥
+C
+∥
+f
+∣
+B
+R
+(
+v
+)
+−
+f
+∣
+B
+R
+(
+w
+)
+∥
+2
+≥
+C
+∥
+g
+v
+−
+g
+w
+∥
+2
+≥
+C
+γ
+∥
+f
+∥
+2
+.
+∣ψ(f)∣≥C∥f∣ 
+B 
+R
+​	
+ (v)
+​	
+ −f∣ 
+B 
+R
+​	
+ (w)
+​	
+ ∥ 
+2
+​	
+ ≥C∥g 
+v
+​	
+ −g 
+w
+​	
+ ∥ 
+2
+​	
+ ≥Cγ∥f∥ 
+2
+​	
+ .
+On the other hand, $\psi$ is supported on a union of $O_{\Delta,R}(1)$ radius-$R$ balls, hence by linearity and the assumption $|s_f(\cdot)|<\varepsilon|f|_2$,
+∣
+ψ
+(
+f
+)
+∣
+≤
+K
+ε
+∥
+f
+∥
+2
+∣ψ(f)∣≤Kε∥f∥ 
+2
+​	
+ 
+for a constant $K=K(\Delta,k,R)>0$ determined by the finite support pattern of $\psi$.
+Choose $\varepsilon< C\gamma/K$. This yields a contradiction.
+Therefore $\max_v |s_f(v)| \ge c|f|_2$ with $c:=C\gamma/(2K)$.
+\end{proof}
+\end{document}

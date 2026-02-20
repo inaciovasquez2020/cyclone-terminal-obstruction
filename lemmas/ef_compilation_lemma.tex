@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\newtheorem{lemma}{Lemma}
+\title{EF-Compilation Lemma (FO$^k$ Local Observable Witness)}
+\author{Inacio F. Vasquez}
+\date{}
+\begin{document}
+\maketitle
+\begin{lemma}[EF-compilation]
+Fix integers $\Delta,k,R\ge 1$. There exists $C=C(\Delta,k,R)>0$ such that for any finite graph $G$ with maximum degree at most $\Delta$, any labeling $f:V(G)\to\mathbb{R}$, and any vertices $v,w\in V(G)$ with
+(
+B
+2
+R
+(
+v
+)
+,
+v
+)
+≡
+F
+O
+k
+(
+B
+2
+R
+(
+w
+)
+,
+w
+)
+,
+(B 
+2R
+​	
+ (v),v)≡ 
+FO 
+k
+ 
+​	
+ (B 
+2R
+​	
+ (w),w),
+there exists an FO$^k$-definable observable $\psi$ supported in $B_{3R}(v)\cup B_{3R}(w)$ such that
+∣
+ψ
+(
+f
+)
+∣
+≥
+C
+ 
+∥
+f
+∣
+B
+R
+(
+v
+)
+−
+f
+∣
+B
+R
+(
+w
+)
+∥
+2
+.
+∣ψ(f)∣≥C∥f∣ 
+B 
+R
+​	
+ (v)
+​	
+ −f∣ 
+B 
+R
+​	
+ (w)
+​	
+ ∥ 
+2
+​	
+ .
+\end{lemma}
+\section*{Proof sketch to be formalized}
+Let $\mathcal{U}$ be the finite set of FO$^k$ formulas of quantifier rank at most $q=q(\Delta,k,R)$ over rooted radius-$3R$ neighborhoods.
+By FO$^k$-equivalence of $(B_{2R}(v),v)$ and $(B_{2R}(w),w)$, there is a duplicator strategy transferring any $k$-tuple local test between the two neighborhoods.
+Using finiteness of the local type space, choose a formula $\varphi\in\mathcal{U}$ whose truth value maximizes the discrepancy induced by the two restricted labelings.
+Define $\psi(f)$ as the signed sum of $f$ over the definable set cut out by $\varphi$ inside the support $B_{3R}(v)\cup B_{3R}(w)$.
+Compactness over the finite type space yields a uniform constant $C>0$.
+\end{document}
