@@ -1,10 +1,12 @@
 import URF.Cyclone.EFGame
+import URF.Cyclone.OverlapIneq
 
 namespace URF.Cyclone
 
 constant Δ k r : Nat
 def Rstar : Nat := r
 
+constant Graph : Type
 constant deg : Graph → Nat
 
 constant corankR : Nat → Graph → Nat
