@@ -9,3 +9,4 @@ $(cat lean-toolchain)
 Reproduce:
   lake update
   lake build
+- Referee closure note: docs/REFEREE_CLOSURE_NOTE.md
