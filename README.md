@@ -1,6 +1,6 @@
 # Cyclone: Terminal Obstruction for FOᵏ-Locality Programs
 
-**Status:** frozen (bom-v1.1)  
+**Status: FROZEN. Cyclone reduced to CSR; EF-compilation is the sole logical primitive. No further mathematical changes without explicit unfreeze.
 **Role:** canonical terminal obstruction in the URF / Chronos program
 
 ## What this repository is
@@ -49,7 +49,7 @@ Status
 - Lean skeleton in place; final inequality proof pending
 - Tagged: cyclone-provisional-v1
 
-Status: Cyclone terminal obstruction closed up to BoxedLASR interface axioms
+Status: FROZEN. Cyclone reduced to CSR; EF-compilation is the sole logical primitive. No further mathematical changes without explicit unfreeze.
 
 ## Lean status
 All definitions and reductions are fully formalized. Remaining assumptions are isolated as explicit interface axioms in lean/URF/Cyclone/Interfaces/BoxedLASR.lean. Full closure requires replacing LocalDuplicatorWins → ∃ PartialIso and localData_invariant with theorems.
