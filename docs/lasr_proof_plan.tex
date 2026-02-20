@@ -1,0 +1,60 @@
+\section{LASR: Proof Plan (radius-$R^\star=r$)}
+
+\subsection{Statement (selector form)}
+Fix $(\Delta,k,r)$ and $R^\star=r$.
+Let $G$ be a bounded-degree graph with $\deg(G)\le \Delta$ and FO$^k_r$-homogeneous.
+Let $\mathcal C(G)$ be the $\mathbb F_2$-cycle space with basis indices $I=\{1,\dots,m\}$.
+Define overlap $i\sim j$ iff there exists $v$ with a local witness in $B_{R^\star}(v)$.
+
+Let $c=\corank_{R^\star}(G)$ be the maximum local cycle-support dimension.
+\textbf{LASR} asserts there exists a witness set $W\subseteq V(G)$ with $|W|\le c$
+such that every overlap $i\sim j$ is witnessed by some $v\in W$.
+
+\subsection{Compression lemma (target)}
+Define the set system
+\[
+S_v := \{(i,j)\in I\times I : \text{$v$ witnesses $i\sim j$}\}.
+\]
+LASR is equivalent to:
+\[
+\exists W\subseteq V,\ |W|\le c,\ \bigcup_{v\in W} S_v = \bigcup_{v\in V} S_v.
+\]
+
+\subsection{Key invariant}
+For each $v$, let $U_v := \rho_v(\mathcal C(G))$ with $\dim U_v \le c$.
+Each witness relation $S_v$ is definable from $U_v$ via a fixed bilinear form
+\[
+(i,j)\in S_v \iff b_v(\rho_v(c_i),\rho_v(c_j))\neq 0.
+\]
+Thus $S_v$ depends only on the \emph{type} of the $c$-dimensional space $U_v$
+together with the induced form $b_v$.
+
+\subsection{FO$^k_r$ homogeneity input}
+FO$^k_r$-homogeneity implies there are at most $T=T(\Delta,k,r)$ distinct local configuration types.
+In particular, there are at most $T$ isomorphism types of induced $(B_{R^\star}(v),\rho_v,b_v)$ data,
+hence at most $T$ distinct sets $S_v$.
+
+\subsection{Selector construction}
+Choose one representative vertex $v_t$ for each distinct $S_v$.
+Let $W=\{v_t\}$.
+Then $\bigcup_{v\in W} S_v = \bigcup_{v\in V} S_v$ by construction and $|W|\le T$.
+
+\subsection{Closing $|W|\le c$}
+It remains to show $T \le c$ under FO$^k_r$-homogeneity.
+This is the core LASR inequality:
+\[
+\boxed{T(\Delta,k,r)\ \le\ \corank_{R^\star}(G).}
+\]
+Equivalently: if the number of distinct witness patterns exceeds $\corank_{R^\star}$,
+then FO$^k_r$-homogeneity is violated (configuration drift).
+
+\subsection{Reduction to linear independence}
+Assume there are $T>c$ distinct witness patterns.
+For each pattern representative $v_t$, pick a cycle $x_t\in \mathcal C(G)$ whose restriction
+distinguishes $U_{v_t}$ from earlier ones.
+Then $\{\rho_{v_t}(x_t)\}_{t=1}^{c+1}$ are linearly independent in some $U_{v^\dagger}$,
+contradicting $\dim U_{v^\dagger}\le c$.
+
+\subsection{End}
+All steps except the boxed inequality are elementary.
+The boxed inequality is the single remaining coercivity statement for LASR.
