@@ -9,10 +9,10 @@ Scope
 - Canonical source of truth remains in the linked repos/paths
 
 Canonical locations (edit with exact permalinks)
-- Inequality statement and context: urf-core/docs/... (link)
-- Proof artifact (LaTeX): urf-core/... (link)
-- Certificate/verifier artifacts: capacity-locality-certification/... or urf-verifier/... (link)
-- Lean stubs (if any): ... (link)
+- Inequality statement and context: urf-core/docs/... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
+- Proof artifact (LaTeX): urf-core/... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
+- Certificate/verifier artifacts: capacity-locality-certification/... or urf-verifier/... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
+- Lean stubs (if any): ... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
 
 Status
 - Wrapper repository
