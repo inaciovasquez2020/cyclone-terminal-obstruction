@@ -1,15 +1,10 @@
+import URF.Cyclone.LASRSelector
 import URF.Cyclone.EF.LocalGame
 
 namespace URF.Cyclone
 
 open URF.Cyclone.EF
 
-constant Graph : Type
-constant V : Graph → Type
-
-constant k r : Nat
-
-constant FOkConfEq : Nat → Nat → Graph → Graph → Prop
 def FOkHom (G : Graph) : Prop := FOkConfEq k r G G
 
 def FOkLocalHom (G : Graph) : Prop :=
