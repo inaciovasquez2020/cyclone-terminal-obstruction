@@ -1,36 +1,43 @@
-Cyclone — Terminal Obstruction Inequality (Wrapper)
+# Cyclone: Terminal Obstruction for FOᵏ-Locality Programs
 
-Purpose
-This repository is a thin, diligence-oriented wrapper that points to the canonical Cyclone inequality and its executable or manuscript artifacts located in the core URF repositories.
+**Status:** frozen (bom-v1.1)  
+**Role:** canonical terminal obstruction in the URF / Chronos program
 
-Scope
-- Naming and navigation only
-- No new math asserted here
-- Canonical source of truth remains in the linked repos/paths
+## What this repository is
 
-Canonical locations (edit with exact permalinks)
-- Inequality statement and context: urf-core/docs/... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
-- Proof artifact (LaTeX): urf-core/... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
-- Certificate/verifier artifacts: capacity-locality-certification/... or urf-verifier/... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
-- Lean stubs (if any): ... https://github.com/inaciovasquez2020/urf-core/blob/main/final-wall-fo-k-locality/clr/clr_cycle_orbit_splitting.tex
+Cyclone isolates the final unresolved obstruction in a family of locality- and capacity-based lower-bound programs, including FOᵏ locality, Ehrenfeucht–Fraïssé games, and entropy-depth refinement limits.
 
-Status
-- Wrapper repository
-- Intended for buyer diligence mapping and licensing packaging
+Informally:
 
-## bom-v1.1 freeze notes
+- If Cyclone holds, the remaining pipeline closes.
+- If Cyclone fails, it should fail here, explicitly.
 
-- Small-graph + pebble-game solver as falsifier search
-- Overlap-rank enumeration via explicit cycle bases
-- Empirical target: B0 < 200
-- Status: frozen; awaiting external signal
+## The obstruction (plain language)
 
-### Status (bom-v1.2)
+Cyclone asks whether bounded-degree, FOᵏ-indistinguishable structures can nevertheless force unbounded global overlap rank.
 
-Core obstruction (BOM / Cyclone) is structural, Lean-formalized, and actively stress-tested.
-Automated falsification hooks exist for:
-- small-graph EF-game locality,
-- overlap-rank enumeration on expanders,
-- kernel CPD₁ verification.
+Equivalently: does repetition of local configuration types necessarily collapse to bounded global structure, or can expander-like constructions evade this indefinitely?
 
-No counterexamples are currently known.
+This is the last non-fakeable escape hatch in the program.
+
+## What is included
+
+- Formal statement of the Cyclone obstruction (B₀ bound)
+- Explicit dependency map to FOᵏ EF-game locality
+- Small-graph and pebble-game falsifier hooks
+- Overlap-rank enumeration scaffolding
+- Versioned freeze (bom-v1.1)
+
+## What is not claimed
+
+- No unconditional P≠NP result
+- No closure of Chronos beyond stated conditionals
+- No claim that Cyclone is true
+
+This repository is designed to fail loudly if the obstruction is false.
+
+## How this fits in the ecosystem
+
+All other repositories in the URF / Chronos ecosystem exist to either reduce to Cyclone or attempt to falsify it.
+
+Cyclone is the wall, not the proof.
