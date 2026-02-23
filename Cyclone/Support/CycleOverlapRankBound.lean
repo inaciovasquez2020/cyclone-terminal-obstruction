@@ -4,7 +4,6 @@ import Std.Data.HashSet
 
 set_option autoImplicit false
 
-import Std.Data.HashMap
 open Std
 
 -- assume previous deterministic expander setup and counting_contradiction_certified
