@@ -1,3 +1,9 @@
+import Std
+import Std.Data.HashMap
+import Std.Data.HashSet
+
+set_option autoImplicit false
+
 import Std.Data.HashMap
 open Std
 
