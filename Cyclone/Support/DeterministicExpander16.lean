@@ -1,4 +1,8 @@
-import Std.Data.HashMap
+import Std
+
+set_option autoImplicit false
+
+open Std
 open Std
 
 structure Vertex where
@@ -13,15 +17,15 @@ def n : Nat := 4
 def R : Nat := 2
 def S : List (Nat × Nat) := [(1,0),(0,1),(1,1)]
 
-def V : List Vertex := List.range n |>.bind fun i => List.range n |>.map fun j => {i := i, j := j}
+def V : List Vertex := List.range n |>List.bind  fun i => List.range n |>.map fun j => {i := i, j := j}
 
 def addMod (x y m : Nat) : Nat := (x + y) % m
 
-def E : List Edge := V.bind fun v => S.map fun s => {u := v, v := {i := addMod v.i s.1 n, j := addMod v.j s.2 n}}
+def E : List Edge := List.bind V fun v => S.map fun s => {u := v, v := {i := addMod v.i s.1 n, j := addMod v.j s.2 n}}
 
 def T : List Edge :=
-  let row_edges := List.range n |>.bind fun j => List.range (n-1) |>.map fun i => {u := {i:=i,j:=j}, v := {i:=i+1,j:=j}}
-  let col_edges := List.range n |>.bind fun i => List.range (n-1) |>.map fun j => {u := {i:=i,j:=j}, v := {i:=i,j:=j+1}}
+  let row_edges := List.range n |>List.bind  fun j => List.range (n-1) |>.map fun i => {u := {i:=i,j:=j}, v := {i:=i+1,j:=j}}
+  let col_edges := List.range n |>List.bind  fun i => List.range (n-1) |>.map fun j => {u := {i:=i,j:=j}, v := {i:=i,j:=j+1}}
   row_edges ++ col_edges
 
 def B : List Edge := E.filter (fun e => !(T.contains e || T.contains {u := e.v, v := e.u}))
@@ -33,7 +37,7 @@ partial def radiusBallAux (frontier : List Vertex) (visited : List Vertex) (r : 
   match r with
   | 0 => visited
   | _ =>
-    let nextFront := frontier.bind neighbors |>.filter (fun u => !(visited.contains u))
+    let nextFront := List.bind frontier neighbors |>.filter (fun u => !(visited.contains u))
     let visited' := visited ++ nextFront
     radiusBallAux nextFront visited' (r-1)
 
