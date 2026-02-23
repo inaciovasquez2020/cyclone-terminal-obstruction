@@ -1,0 +1,1 @@
+- ConfigurationTypes: eliminated (no legacy or active source)
