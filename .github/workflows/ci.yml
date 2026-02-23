@@ -2,18 +2,26 @@ name: lean-ci
 
 on:
   push:
-    branches: [ main, slim-bootstrap ]
+    branches: [ slim-bootstrap ]
   pull_request:
+    branches: [ slim-bootstrap ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install elan
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Toolchain
+        run: |
+          lean --version
+          lake --version
+
       - name: Build
         run: |
           lake update
