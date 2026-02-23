@@ -25,9 +25,3 @@ by
     -- any extra cycles force a repeated FO^k_R signature
     sorry
   exact counting_contradiction_certified this
-
--- Support/DeterministicExpander16_Count_Cert.lean
-
-def main : IO Unit := do
-  IO.println s!"Total FO^k_R types: {vertexSignatures.size}"
-  IO.println s!"Collisions (vertices sharing signatures): {detectCollisions}"
