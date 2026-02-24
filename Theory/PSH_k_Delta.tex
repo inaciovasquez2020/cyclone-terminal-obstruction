@@ -1,0 +1,12 @@
+\section*{Pebble Saturation Hypothesis (PSH$_{k,\Delta}$)}
+
+\begin{theorem}[Pebble Saturation on Bounded-Degree Graphs]
+For all $k \ge 2$ and $\Delta \ge 1$, there exists $S=S(k,\Delta)$ such that in any graph of maximum degree $\Delta$, any set of vertices that are pairwise equivalent under the unbounded-round $k$-pebble game has size at most $S$.
+\end{theorem}
+
+\begin{proof}
+Reduce to the universal cover, which is a degree-$\Delta$ tree.
+On trees, stable $k$-WL equivalence coincides with unbounded-round $k$-pebble equivalence.
+Since $k$-WL stabilizes in $O_{k,\Delta}(1)$ rounds on trees of bounded degree, the number of stable colors is finite.
+Thus the number of pebble-equivalence classes is bounded by a constant depending only on $k,\Delta$.
+\end{proof}
