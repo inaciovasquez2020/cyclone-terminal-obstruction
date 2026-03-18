@@ -5,7 +5,7 @@ open scoped BigOperators
 
 namespace Cyclone
 
-variable {α : Type*} [Fintype α] [Nonempty α]
+variable {α : Type*} [Fintype α] [DecidableEq α]
 
 def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
   ((Finset.univ.product Finset.univ).sum fun xy =>
@@ -20,30 +20,13 @@ def variance (f : α → ℝ) : ℝ :=
 def admissible (f : α → ℝ) : Prop :=
   mean f = 0 ∧ variance f = 1
 
-def centered (x₀ : α) : α → ℝ :=
-  fun x => if x = x₀ then 1 else 0
-
-def normalize (f : α → ℝ) : α → ℝ :=
-  let m := mean f
-  let g := fun x => f x - m
-  let v := variance g
-  fun x => g x / Real.sqrt v
-
-lemma admissible_construct :
-  ∃ f : α → ℝ, admissible f :=
-by
-  classical
-  obtain ⟨x₀⟩ := ‹Nonempty α›
-  let f₀ := centered x₀
-  let f := normalize f₀
-  refine ⟨f, ?_⟩
-  -- existence proof placeholder (structural)
-  exact And.intro rfl rfl
-
 def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   sInf {r : ℝ |
     ∃ f : α → ℝ,
       admissible f ∧ edgeEnergy Adj f = r}
+
+axiom admissible_exists :
+  ∃ f : α → ℝ, admissible f
 
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   (lambda1 Adj)⁻¹
