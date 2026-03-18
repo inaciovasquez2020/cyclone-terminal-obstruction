@@ -5,16 +5,23 @@ open scoped BigOperators
 
 namespace Cyclone
 
-variable {α : Type*}
+variable {α : Type*} [Fintype α] [DecidableEq α]
 
-def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (_f : α → ℝ) : ℝ := 0
+def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
+  ((Finset.univ.product Finset.univ).sum fun xy =>
+    if Adj xy.1 xy.2 then (f xy.1 - f xy.2)^2 else 0) / 2
 
-def mean (_f : α → ℝ) : ℝ := 0
+def mean (f : α → ℝ) : ℝ :=
+  (∑ x, f x) / Fintype.card α
 
-def variance (_f : α → ℝ) : ℝ := 0
+def variance (f : α → ℝ) : ℝ :=
+  ∑ x, (f x - mean f)^2
 
-axiom lambda1
-  (Adj : α → α → Prop) [DecidableRel Adj] : ℝ
+def rayleigh (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
+  edgeEnergy Adj f / variance f
+
+def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
+  sInf {r : ℝ | ∃ f : α → ℝ, variance f ≠ 0 ∧ rayleigh Adj f = r}
 
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   (lambda1 Adj)⁻¹
