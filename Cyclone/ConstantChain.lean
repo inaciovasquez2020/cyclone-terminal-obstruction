@@ -17,15 +17,12 @@ def mean (f : α → ℝ) : ℝ :=
 def variance (f : α → ℝ) : ℝ :=
   ∑ x, (f x - mean f)^2
 
-def rayleigh (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
-  edgeEnergy Adj f / variance f
-
 def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   sInf {r : ℝ |
     ∃ f : α → ℝ,
-      (variance f > 0) ∧
       (mean f = 0) ∧
-      rayleigh Adj f = r}
+      (variance f = 1) ∧
+      edgeEnergy Adj f = r}
 
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   (lambda1 Adj)⁻¹
