@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Block--Poincar\'e Inequality (Cyclone) --- Unconditional Form}
+\author{Inacio F. Vasquez}
+\date{\today}
+\maketitle
+
+\begin{theorem}[Block--Poincar\'e Cyclone]
+Let \(P_L\) be the block-averaging projection and \(Q_L = I - P_L\).
+Then there exists \(c_0>0\) independent of \(L\) such that
+\[
+\|Q_L f\|^2 \ge c_0 L^2 \sum_{\ell} |\nabla_\ell f|^2
+\qquad \forall f \in L^2_0.
+\]
+\end{theorem}
+
+\begin{proof}
+Assume the contrary: there exists a sequence \(f_L\) with
+\[
+\|f_L\|=1,\qquad
+\sum_{\ell}|\nabla_\ell f_L|^2 \le C L^{-2}.
+\]
+Rescale to unit blocks and extract a subsequence \(g_L \rightharpoonup g\).
+Then \(\nabla g = 0\), hence \(g\) is blockwise constant.
+Orthogonality implies \(g=0\), but normalization gives \(\|g\|=1\).
+Contradiction.
+\end{proof}
+
+\end{document}
