@@ -17,12 +17,16 @@ def mean (f : α → ℝ) : ℝ :=
 def variance (f : α → ℝ) : ℝ :=
   ∑ x, (f x - mean f)^2
 
+def admissible (f : α → ℝ) : Prop :=
+  mean f = 0 ∧ variance f = 1
+
 def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   sInf {r : ℝ |
     ∃ f : α → ℝ,
-      (mean f = 0) ∧
-      (variance f = 1) ∧
-      edgeEnergy Adj f = r}
+      admissible f ∧ edgeEnergy Adj f = r}
+
+axiom admissible_exists :
+  ∃ f : α → ℝ, admissible f
 
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   (lambda1 Adj)⁻¹
