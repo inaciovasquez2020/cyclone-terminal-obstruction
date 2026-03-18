@@ -2,18 +2,16 @@ import Mathlib
 
 noncomputable section
 open scoped BigOperators
-open Finset
 
 namespace Cyclone
 
 variable {α : Type*}
 
-def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
-  0
+def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (_f : α → ℝ) : ℝ := 0
 
-def mean (f : α → ℝ) : ℝ := 0
+def mean (_f : α → ℝ) : ℝ := 0
 
-def variance (f : α → ℝ) : ℝ := 0
+def variance (_f : α → ℝ) : ℝ := 0
 
 axiom lambda1
   (Adj : α → α → Prop) [DecidableRel Adj] : ℝ
@@ -39,7 +37,7 @@ theorem Cprime_bound
 theorem Cprime_sharp_3d
   (Cloc : ℝ)
   (Adj : α → α → Prop) [DecidableRel Adj]
-  (d : Nat) :
+  (_d : Nat) :
   Cprime Cloc Adj = Cloc * (lambda1 Adj)⁻¹ := by
   simp [Cprime]
 
