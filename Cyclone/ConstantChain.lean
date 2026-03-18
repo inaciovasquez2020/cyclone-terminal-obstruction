@@ -21,7 +21,11 @@ def rayleigh (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : �
   edgeEnergy Adj f / variance f
 
 def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
-  sInf {r : ℝ | ∃ f : α → ℝ, variance f > 0 ∧ rayleigh Adj f = r}
+  sInf {r : ℝ |
+    ∃ f : α → ℝ,
+      (variance f > 0) ∧
+      (mean f = 0) ∧
+      rayleigh Adj f = r}
 
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   (lambda1 Adj)⁻¹
