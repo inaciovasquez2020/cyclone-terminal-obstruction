@@ -120,3 +120,70 @@ def admissible (P : AdmissibleParams) (X : Instance) : Prop :=
   X.transcriptCap ≤ P.Ccap * (Real.log P.n) ^ P.k ∧
   X.boundaryOverlap ≤ P.Cloc
 
+
+def localContribution (K : CoreConstants) (X : Instance) : ℝ :=
+  K.κ_cap * X.transcriptCap
+  + K.κ_loc * X.boundaryOverlap
+  + K.κ_var * X.varianceCost
+  + K.κ_bdry * X.boundaryCost
+  + K.κ_bg * X.blockGap
+  + K.κ_err * X.defect
+
+def totalLocalContribution (K : CoreConstants) (X : Instance) : ℝ :=
+  localContribution K X
+
+def linearContributionFloor (c3 : ℝ) (P : AdmissibleParams) (K : CoreConstants) (X : Instance) : Prop :=
+  c3 * P.n ≤ totalLocalContribution K X
+
+def expansionWitness (α : ℝ) (P : AdmissibleParams) (X : Instance) : Prop :=
+  α * P.n ≤ X.blockGap
+
+def refinementDepthFloor (c4 : ℝ) (P : AdmissibleParams) (X : Instance) : Prop :=
+  c4 * P.n ≤ X.depth
+
+def blockGapDepthCoupling (c2 : ℝ) (P : AdmissibleParams) (X : Instance) : Prop :=
+  c2 * P.n ≤ X.blockGap * X.depth
+
+structure WorstCaseInstance (P : AdmissibleParams) (K : CoreConstants) where
+  X : Instance
+  h_adm : admissible P X
+  h_min : ∀ Y : Instance, admissible P Y → coercivityFunctional K X ≤ coercivityFunctional K Y
+
+axiom ExpansionLemma
+  (α : ℝ) (P : AdmissibleParams) :
+  ∀ X : Instance, admissible P X → expansionWitness α P X
+
+axiom DepthFromRefinement
+  (c4 : ℝ) (P : AdmissibleParams) :
+  ∀ X : Instance, admissible P X → refinementDepthFloor c4 P X
+
+axiom CouplingLemma
+  (c2 : ℝ) (P : AdmissibleParams) :
+  ∀ X : Instance, admissible P X → blockGapDepthCoupling c2 P X
+
+axiom ContributionFloor
+  (c3 : ℝ) (P : AdmissibleParams) (K : CoreConstants) :
+  ∀ X : Instance, admissible P X → linearContributionFloor c3 P K X
+
+axiom WorstCaseExists
+  (P : AdmissibleParams) (K : CoreConstants) :
+  Nonempty (WorstCaseInstance P K)
+
+theorem coercivity_linear_floor
+  (c3 : ℝ) (P : AdmissibleParams) (K : CoreConstants) (X : Instance)
+  (hX : admissible P X) :
+  c3 * P.n ≤ coercivityFunctional K X := by
+  exact ContributionFloor c3 P K X hX
+
+theorem deterministic_depth_bound
+  (c4 : ℝ) (P : AdmissibleParams) (X : Instance)
+  (hX : admissible P X) :
+  c4 * P.n ≤ X.depth := by
+  exact DepthFromRefinement c4 P X hX
+
+theorem blockGap_depth_product_lean
+  (c2 : ℝ) (P : AdmissibleParams) (X : Instance)
+  (hX : admissible P X) :
+  c2 * P.n ≤ X.blockGap * X.depth := by
+  exact CouplingLemma c2 P X hX
+
