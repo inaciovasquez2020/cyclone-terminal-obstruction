@@ -187,3 +187,28 @@ theorem blockGap_depth_product_lean
   c2 * P.n ≤ X.blockGap * X.depth := by
   exact CouplingLemma c2 P X hX
 
+
+theorem admissible_implies_cyclone
+  (c3 c4 : ℝ)
+  (P : AdmissibleParams)
+  (K : CoreConstants)
+  (X : Instance)
+  (h_adm : admissible P X)
+  (h_phi : c3 * P.n ≤ coercivityFunctional K X)
+  (h_depth : c4 * P.n ≤ X.depth)
+  (h_norm : c3 + K.κ_ref * c4 ≥ 1) :
+  X.H0 - coercivityFunctional K X ≤ K.κ_ref * X.depth := by
+  have hH0 : X.H0 ≤ P.n := h_adm.right.right.left
+  have h1 : X.H0 - coercivityFunctional K X ≤ P.n - c3 * P.n := by
+    have := sub_le_sub hH0 h_phi
+    exact this
+  have h2 : P.n - c3 * P.n = (1 - c3) * P.n := by ring
+  have h3 : (1 - c3) * P.n ≤ K.κ_ref * (c4 * P.n) := by
+    have := h_norm
+    nlinarith
+  have h4 : K.κ_ref * (c4 * P.n) ≤ K.κ_ref * X.depth := by
+    have := mul_le_mul_of_nonneg_left h_depth (by positivity)
+    simpa [mul_comm, mul_left_comm, mul_assoc] using this
+  have := le_trans h1 (le_trans (by simpa [h2] using h3) h4)
+  exact this
+
