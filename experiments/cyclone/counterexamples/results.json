@@ -1,56 +1,6 @@
 {
-  "trials": 10000,
-  "found": 85,
-  "examples": [
-    {
-      "H0": 100,
-      "transcriptCap": 18.74350088422442,
-      "boundaryOverlap": 7.543797008564617,
-      "varianceCost": 9.15355923515535,
-      "boundaryCost": 1.643862811546808,
-      "blockGap": 0.41071780884837644,
-      "defect": 2.054325624059552,
-      "depth": 3.51674964457895
-    },
-    {
-      "H0": 100,
-      "transcriptCap": 0.39698994655268216,
-      "boundaryOverlap": 1.0587659004479533,
-      "varianceCost": 19.584164713858286,
-      "boundaryCost": 4.508555208841173,
-      "blockGap": 0.45672765230572193,
-      "defect": 1.4664875269186606,
-      "depth": 7.910895911880019
-    },
-    {
-      "H0": 100,
-      "transcriptCap": 15.25894216039141,
-      "boundaryOverlap": 0.08329137358557892,
-      "varianceCost": 19.731644726863784,
-      "boundaryCost": 7.035789597676533,
-      "blockGap": 0.5406654193206546,
-      "defect": 0.38948693175593574,
-      "depth": 2.353364363604466
-    },
-    {
-      "H0": 100,
-      "transcriptCap": 6.4320007750560375,
-      "boundaryOverlap": 0.249029993377754,
-      "varianceCost": 0.42202229676757685,
-      "boundaryCost": 0.8426034645529568,
-      "blockGap": 0.3522361086140689,
-      "defect": 1.4153398825575088,
-      "depth": 7.875372283822611
-    },
-    {
-      "H0": 100,
-      "transcriptCap": 5.922473005397509,
-      "boundaryOverlap": 4.237498547712059,
-      "varianceCost": 23.23980965260679,
-      "boundaryCost": 6.337000651352929,
-      "blockGap": 0.8140913807802354,
-      "defect": 4.397383229096425,
-      "depth": 0.5727439349535591
-    }
-  ]
+  "raw_trials": 10000,
+  "admissible_trials": 149,
+  "found": 0,
+  "examples": []
 }
