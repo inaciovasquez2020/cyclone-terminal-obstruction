@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": ["n","c0","Ccap","k","Cloc","c1","c2","Vmax","constants"],
+  "properties": {
+    "n": {"type": "number"},
+    "c0": {"type": "number"},
+    "Ccap": {"type": "number"},
+    "k": {"type": "number"},
+    "Cloc": {"type": "number"},
+    "c1": {"type": "number"},
+    "c2": {"type": "number"},
+    "Vmax": {"type": "number"},
+    "constants": {
+      "type": "object",
+      "required": ["kappa_cap","kappa_loc","kappa_ref","kappa_bg","kappa_bdry","kappa_var","kappa_err"],
+      "properties": {
+        "kappa_cap": {"type": "number"},
+        "kappa_loc": {"type": "number"},
+        "kappa_ref": {"type": "number"},
+        "kappa_bg": {"type": "number"},
+        "kappa_bdry": {"type": "number"},
+        "kappa_var": {"type": "number"},
+        "kappa_err": {"type": "number"}
+      }
+    }
+  }
+}
