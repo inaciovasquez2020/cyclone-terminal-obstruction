@@ -39,7 +39,7 @@ def chronosLowerBound (K : CoreConstants) (X : Instance) : ℝ :=
 def terminalObstruction (K : CoreConstants) (X : Instance) : Prop :=
   chronosLowerBound K X ≤ K.κ_ref * X.depth
 
-axiom Cyclone
+theorem Cyclone := cyclone_from_principles
   (K : CoreConstants) :
   ∀ X : Instance, 0 ≤ X.H0 → 0 ≤ coercivityFunctional K X →
     chronosLowerBound K X ≤ K.κ_ref * X.depth
