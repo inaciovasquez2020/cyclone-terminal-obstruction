@@ -1,0 +1,13 @@
+{
+  "instance": {
+    "H0": 100,
+    "transcriptCap": 21.207592441913597,
+    "boundaryOverlap": 10.0,
+    "varianceCost": 10.0,
+    "boundaryCost": 5.0,
+    "blockGap": 0.5,
+    "defect": 0.0,
+    "depth": 40.0
+  },
+  "cyclone_holds": true
+}
