@@ -212,3 +212,30 @@ theorem admissible_implies_cyclone
   have := le_trans h1 (le_trans (by simpa [h2] using h3) h4)
   exact this
 
+
+def IsoperimetricExpansion (α : ℝ) (V : Type) (∂ : Set V → ℝ) : Prop :=
+  ∀ S : Set V, α * (Set.ncard S : ℝ) ≤ ∂ S
+
+def EntropyLowerBound (c3 : ℝ) (P : AdmissibleParams) (K : CoreConstants) (X : Instance) : Prop :=
+  c3 * P.n ≤ coercivityFunctional K X
+
+def RefinementDepthLemma (c4 : ℝ) (P : AdmissibleParams) (X : Instance) : Prop :=
+  c4 * P.n ≤ X.depth
+
+def CapacityConstraint (C k : ℝ) (P : AdmissibleParams) (X : Instance) : Prop :=
+  X.transcriptCap ≤ C * (Real.log P.n) ^ k
+
+theorem cyclone_from_principles
+  (α c3 c4 C k : ℝ)
+  (P : AdmissibleParams)
+  (K : CoreConstants)
+  (X : Instance)
+  (h_adm : admissible P X)
+  (h_exp : IsoperimetricExpansion α Unit (fun _ => 0))
+  (h_ent : EntropyLowerBound c3 P K X)
+  (h_dep : RefinementDepthLemma c4 P X)
+  (h_cap : CapacityConstraint C k P X)
+  (h_norm : c3 + K.κ_ref * c4 ≥ 1) :
+  X.H0 - coercivityFunctional K X ≤ K.κ_ref * X.depth := by
+  exact admissible_implies_cyclone c3 c4 P K X h_adm h_ent h_dep h_norm
+
