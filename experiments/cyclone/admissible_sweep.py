@@ -2,15 +2,17 @@ import math
 import random
 import json
 
-def sample_instance(n, c0, Ccap, k, Cloc, c_depth):
+def sample_instance(n, c0, Ccap, k, Cloc, c1, c2):
     H0 = n
     transcriptCap = random.uniform(0, Ccap * (math.log(n)**k))
     boundaryOverlap = random.uniform(0, Cloc)
-    varianceCost = random.uniform(0, 5)
+    varianceCost = random.uniform(0, n**0.5)
     boundaryCost = random.uniform(0, 5)
     blockGap = random.uniform(c0, c0 + 1.0)
-    defect = random.uniform(0, 3)
-    depth = random.uniform(c_depth * n, n)
+    depth = random.uniform(c1 * n, n)
+
+    if blockGap * depth < c2 * n:
+        return None
 
     return {
         "H0": H0,
@@ -19,7 +21,7 @@ def sample_instance(n, c0, Ccap, k, Cloc, c_depth):
         "varianceCost": varianceCost,
         "boundaryCost": boundaryCost,
         "blockGap": blockGap,
-        "defect": defect,
+        "defect": random.uniform(0, 3),
         "depth": depth
     }
 
@@ -50,14 +52,15 @@ def check_cyclone(K, X):
 
 def run_trials(trials=1000, n=100):
     P = {"n": n, "c0": 0.5, "Ccap": 1.0, "k": 2.0, "Cloc": 10.0}
-    K = {"cap":1.0,"loc":1.0,"var":1.0,"bdry":1.0,"bg":1.0,"err":1.0,"ref":1.0}
+    K = {"cap":2.0,"loc":2.0,"var":2.0,"bdry":2.0,"bg":2.0,"err":2.0,"ref":5.0}
     results = []
     for _ in range(trials):
-        X = sample_instance(n, P["c0"], P["Ccap"], P["k"], P["Cloc"], c_depth=0.2)
+        X = sample_instance(n, P["c0"], P["Ccap"], P["k"], P["Cloc"], c1=0.4, c2=0.2)
+        if X is None:
+            continue
         if not admissible(P, X):
             continue
-        ok = check_cyclone(K, X)
-        results.append(ok)
+        results.append(check_cyclone(K, X))
     return {
         "trials": len(results),
         "success_rate": sum(results)/len(results) if results else 0.0
