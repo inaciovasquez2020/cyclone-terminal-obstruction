@@ -103,3 +103,20 @@ theorem Chronos_to_URF_single_dependency
   exact CCL_single_coercivity_inequality K X hH0 hC
 
 end URF
+
+structure AdmissibleParams where
+  n : ℝ
+  c0 : ℝ
+  Ccap : ℝ
+  k : ℝ
+  Cloc : ℝ
+  deriving Repr
+
+def admissible (P : AdmissibleParams) (X : Instance) : Prop :=
+  0 ≤ X.H0 ∧
+  0 < P.n ∧
+  X.H0 ≤ P.n ∧
+  X.blockGap ≥ P.c0 ∧
+  X.transcriptCap ≤ P.Ccap * (Real.log P.n) ^ P.k ∧
+  X.boundaryOverlap ≤ P.Cloc
+
