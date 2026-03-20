@@ -71,3 +71,22 @@ theorem finite_energy_implies_global_constant
   obtain ⟨c, hc⟩ := connected_constant_of_local hconn (hconst n hn)
   exact ⟨c, hc⟩
 
+
+theorem finite_energy_constant_zero
+  (f : ℕ → α → ℝ)
+  (Adj : α → α → Prop) [DecidableRel Adj]
+  (hconn : graph_connected Adj)
+  (hmean : ∀ n, mean (f n) = 0)
+  (h : ∃ N, ∀ n ≥ N, dirichlet_form Adj (f n) = 0) :
+  ∃ N, ∀ n ≥ N, ∀ x, f n x = 0 := by
+  rcases finite_energy_implies_global_constant f Adj hconn h with ⟨N, hN⟩
+  refine ⟨N, ?_⟩
+  intro n hn x
+  rcases hN n hn with ⟨c, hc⟩
+  have hmean0 := hmean n
+  have hcst : mean (fun _ => c) = c := by
+    exact mean_const c
+  have : c = 0 := by
+    simpa [hcst, hc] using hmean0
+  simpa [this] using hc x
+
