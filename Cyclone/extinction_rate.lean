@@ -1,12 +1,11 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Finset.Basic
 
-open scoped BigOperators
-
 variable {α : Type*} [Fintype α] [DecidableEq α]
 
-def variance (f : α → ℝ) : ℝ :=
-  (1 / Fintype.card α) * ∑ x : α, (f x)^2
+noncomputable def variance (f : α → ℝ) : ℝ :=
+  (1 / (Fintype.card α : ℝ)) *
+    Finset.sum Finset.univ (fun x => (f x)^2)
 
 def dirichlet_form (w : α → α → ℝ) (f : α → ℝ) : ℝ :=
   sorry
