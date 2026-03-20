@@ -1,20 +1,19 @@
-import Mathlib.Data.Real.Basic
-import Mathlib.Data.Finset.Basic
+import Mathlib
 
-variable {α : Type*} [Fintype α] [DecidableEq α]
+noncomputable section
 
-noncomputable def variance (f : α → ℝ) : ℝ :=
-  (1 / (Fintype.card α : ℝ)) *
-    Finset.sum Finset.univ (fun x => (f x)^2)
+variable {α : Type*}
 
-def dirichlet_form (w : α → α → ℝ) (f : α → ℝ) : ℝ :=
-  sorry
+def variance (f : α → ℝ) : ℝ := sorry
 
-def lambda1 (w : α → α → ℝ) : ℝ :=
-  sorry
+def dirichlet_form (w : α → α → ℝ) (f : α → ℝ) : ℝ := sorry
+
+def lambda1 (w : α → α → ℝ) : ℝ := sorry
 
 theorem spectral_gap_bound
   (w : α → α → ℝ)
   (f : α → ℝ) :
   lambda1 w * variance f ≤ dirichlet_form w f := by
   sorry
+
+end
