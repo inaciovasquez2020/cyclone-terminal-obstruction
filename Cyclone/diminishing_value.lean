@@ -45,3 +45,29 @@ theorem finite_energy_extinction
   ∃ N, ∀ n ≥ N, dirichlet_form Adj (f n) = 0 := by
   exact h
 
+
+theorem finite_energy_implies_constant_tail
+  (f : ℕ → α → ℝ)
+  (Adj : α → α → Prop) [DecidableRel Adj]
+  (h : ∃ N, ∀ n ≥ N, dirichlet_form Adj (f n) = 0) :
+  ∃ N, ∀ n ≥ N, ∀ x y, Adj x y → f n x = f n y := by
+  rcases h with ⟨N, hN⟩
+  refine ⟨N, ?_⟩
+  intro n hn x y hxy
+  have hE := hN n hn
+  exact dirichlet_zero_implies_constant hE x y hxy
+
+theorem finite_energy_implies_global_constant
+  (f : ℕ → α → ℝ)
+  (Adj : α → α → Prop) [DecidableRel Adj]
+  (hconn : graph_connected Adj)
+  (h : ∃ N, ∀ n ≥ N, dirichlet_form Adj (f n) = 0) :
+  ∃ N c, ∀ n ≥ N, ∀ x, f n x = c := by
+  rcases h with ⟨N, hN⟩
+  refine ⟨N, ?_⟩
+  intro n hn
+  have hconst :=
+    finite_energy_implies_constant_tail f Adj ⟨N, hN⟩ n hn
+  obtain ⟨c, hc⟩ := connected_constant_of_local hconn (hconst n hn)
+  exact ⟨c, hc⟩
+
