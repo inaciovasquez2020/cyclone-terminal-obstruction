@@ -47,3 +47,21 @@ T = \Omega(n^2).
 \]
 \end{theorem}
 
+
+% Correction: SAT limitation of FO^k framework
+\begin{proposition}
+For $k$-CNF with $m = \alpha n$ or $m = n^{1+\varepsilon}$, FO^k-equivalence may collapse exponentially many instances:
+\[
+|\{F' : F' \equiv_k F\}| \ge 2^{\Omega(m)}.
+\]
+Hence
+\[
+\log N_k(\mathrm{SAT}_{n,m}) \not\ge \Omega(m),
+\]
+and no superlinear lower bound follows from FO^k-type counting.
+\end{proposition}
+
+\begin{remark}
+The entropy-depth framework yields tight bounds for linear orders and graphs but is insufficient for SAT. Lower bounds in SAT require non-local methods such as resolution complexity or switching lemmas.
+\end{remark}
+
