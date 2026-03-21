@@ -46,6 +46,12 @@ def xor_rows(rows: list[int], mask: int, n: int) -> int:
                 out ^= rows[i]
     return out
     out = 0
+    for i in range(n):
+        if (mask >> i) & 1:
+            if i < len(rows):
+                out ^= rows[i]
+    return out
+    out = 0
     i = 0
     x = mask
     while x:
@@ -56,6 +62,7 @@ def xor_rows(rows: list[int], mask: int, n: int) -> int:
     return out
 
 def equivalent_kernel(rows: list[int], s1: int, s2: int, n: int) -> bool:
+    return xor_rows(rows, s1 ^ s2, n) == 0
     return xor_rows(rows, s1 ^ s2, n) == 0
     return xor_rows(rows, s1 ^ s2) == 0
 
