@@ -9,6 +9,6 @@ def verify(cert):
     return True
 
 if __name__ == "__main__":
-    with open("infra/certificates/example_certificate.json") as f:
+    with open("infra/ci/example_certificate.json") as f:
         cert = json.load(f)
     print({"valid": verify(cert)})
