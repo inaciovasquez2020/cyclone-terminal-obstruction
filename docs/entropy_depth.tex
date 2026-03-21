@@ -252,3 +252,41 @@ H(X)\le \sum_t I(X;\mathcal T_{t+1}\mid \mathcal T_t),
 and $H(X)=\Theta(n)$.
 \end{proof}
 
+
+% Failure modes and required conditions
+\subsection{Failure Modes and Necessary Conditions}
+
+\begin{proposition}[Frontloading Failure]
+If there exists $t_0 \ll T$ such that
+\[
+\sum_{t=1}^{t_0} I(X;\mathcal T_{t+1}\mid \mathcal T_t) \ge \Theta(n),
+\]
+then no superlinear lower bound follows.
+\end{proposition}
+
+\begin{condition}[No Frontloading]
+Any admissible hybrid process must satisfy
+\[
+\forall t \le T,\quad
+\sum_{i=1}^{t} I(X;\mathcal T_{i+1}\mid \mathcal T_i) \le O\!\left(\frac{t}{T} H(X)\right).
+\]
+\end{condition}
+
+\begin{proposition}[Local Collapse]
+Pure FO$^k$ processes satisfy
+\[
+|\{F' : F' \equiv_k F\}| \ge 2^{\Omega(m)},
+\]
+hence cannot yield superlinear bounds for SAT.
+\end{proposition}
+
+\begin{condition}[Non-Local Necessity]
+Any extension achieving
+\[
+T \ge \Omega(n^{1+\varepsilon})
+\]
+must include operators not reducible to FO$^k$-local queries.
+\end{condition}
+
+\end{document}
+
