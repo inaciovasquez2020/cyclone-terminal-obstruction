@@ -20,8 +20,8 @@ lemma cycle_overlap_bound :
   ∃ v1 v2 : Vertex, v1 ≠ v2 ∧ vertexSignature v1 = vertexSignature v2 :=
 by
   intro h
-  -- apply pigeonhole principle: more independent cycles than FO^k_R types
+  -- apply pigeonhole principle: more independent cycles than FO\$^{k}\$_R types
   have : detectCollisions.length > 0 := by
-    -- any extra cycles force a repeated FO^k_R signature
+    -- any extra cycles force a repeated FO\$^{k}\$_R signature
     sorry
   exact counting_contradiction_certified this

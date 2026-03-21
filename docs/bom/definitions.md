@@ -6,5 +6,5 @@ Define orank(C) = rank_F2(M_C).
 cycle-expander (Delta,h)
 A graph G=(V,E) with max degree <= Delta is a (Delta,h)-edge-expander if
 for all S subset V with 1 <= |S| <= |V|/2 we have |∂S| >= h |S|.
-FO^k type model
+FO\$^{k}\$ type model
 EF k-pebble r-round type of a rooted ball (B_r(v),v): equivalence under Duplicator win in k-pebble EF game of r rounds.

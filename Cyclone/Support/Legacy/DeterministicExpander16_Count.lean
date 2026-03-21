@@ -59,14 +59,14 @@ def detectCollisions : List (Vertex × Vertex) :=
     | none => acc
   ) []
 
-#eval "Total FO^k_R types: " ++ toString vertexSignatures.size
+#eval "Total FO\$^{k}\$_R types: " ++ toString vertexSignatures.size
 #eval "Collisions (vertices sharing signatures): " ++ toString detectCollisions
 
 lemma counting_contradiction :
   ∃ v1 v2 : Vertex, v1 ≠ v2 ∧ vertexSignature v1 = vertexSignature v2 :=
 by
   have h : detectCollisions.length > 0 := by
-    -- by pigeonhole principle: more independent cycles than FO^k_R types
+    -- by pigeonhole principle: more independent cycles than FO\$^{k}\$_R types
     sorry
   cases detectCollisions with
   | nil => contradiction
