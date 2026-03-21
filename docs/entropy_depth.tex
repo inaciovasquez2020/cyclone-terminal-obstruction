@@ -101,3 +101,24 @@ Construct a hybrid model where:
 \]
 \end{goal}
 
+
+% Final open problem: hybrid non-local extension
+\section{Final Open Problem: Non-Local Completion}
+
+\begin{problem}[Hybrid Entropy–Proof Complexity Bridge]
+Construct a model $\mathcal H$ extending FO$^k$-admissible refinement with a non-local operator $\mathsf N$ such that:
+\begin{align*}
+\text{(i)}\;& \mathcal H \text{ simulates resolution or switching-lemma arguments,}\\
+\text{(ii)}\;& \mathcal H \text{ avoids FO}^k\text{-collapse,}\\
+\text{(iii)}\;& T_{\mathcal H}(F_n) \ge \Omega(n^{1+\varepsilon}) \text{ for near-threshold SAT,}\\
+\text{(iv)}\;& \text{Normalization: } T \ge \frac{H(X)}{\text{effective capacity of } \mathcal H}.
+\end{align*}
+\end{problem}
+
+\begin{conjecture}[Non-Local Transfer]
+For suitable SAT families $\{F_n\}$,
+\[
+\mathrm{ResLower}(F_n)\ \Longrightarrow\ T_{\mathcal H}(F_n)\ge \Omega(n^{1+\varepsilon}).
+\]
+\end{conjecture}
+
