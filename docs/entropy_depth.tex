@@ -180,3 +180,41 @@ T \ge \Omega(n^{1+\varepsilon}).
 \]
 \end{goal}
 
+
+% Switching lemma embedding
+\subsection{Switching Lemma Embedding}
+
+\begin{definition}[Random Restriction Operator $\mathsf S_\rho$]
+For $\rho \in [0,1]$, a restriction $\sigma \sim \mathsf S_\rho$ assigns each variable independently:
+\[
+x_i =
+\begin{cases}
+0 & \text{with prob. } \tfrac{1-\rho}{2},\\
+1 & \text{with prob. } \tfrac{1-\rho}{2},\\
+* & \text{with prob. } \rho.
+\end{cases}
+\]
+\end{definition}
+
+\begin{lemma}[Switching Compression]
+Under $\sigma \sim \mathsf S_\rho$, with high probability a $k$-CNF simplifies to a decision tree of depth
+\[
+d = O(\log n).
+\]
+\end{lemma}
+
+\begin{definition}[Switching Information Drop]
+\[
+\Delta I_\sigma := H(X) - H(X \mid \sigma).
+\]
+\end{definition}
+
+\begin{goal}
+Establish that repeated application of $\mathsf S_\rho$ enforces:
+\[
+\sum_{t=1}^T \Delta I_{\sigma_t} \le O\!\left(\frac{n}{\log n}\right)
+\]
+unless $T \ge \Omega(n^{1+\varepsilon}).
+\]
+\end{goal}
+
