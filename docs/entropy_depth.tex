@@ -218,3 +218,37 @@ unless $T \ge \Omega(n^{1+\varepsilon}).
 \]
 \end{goal}
 
+
+% Unified transfer theorem (target)
+\subsection{Unified Transfer Theorem}
+
+\begin{theorem}[Resolution/Switching $\Rightarrow$ EntropyDepth]
+Let $\{F_n\}$ be a family of $k$-CNF formulas at clause density $m=\alpha n$.
+
+Assume either:
+\begin{itemize}
+\item[(R)] any resolution refutation of $F_n$ requires width $w \ge c n$, or
+\item[(S)] random restrictions $\mathsf S_\rho$ yield decision-tree depth $d=O(\log n)$ with failure probability $\le n^{-\omega(1)}$.
+\end{itemize}
+
+Then any hybrid refinement process $\mathcal H$ with local FO$^k$ updates and non-local operators $(\mathsf R,\mathsf S_\rho)$ satisfies
+\[
+T_{\mathcal H}(F_n) \;\ge\; \Omega(n^{1+\varepsilon})
+\]
+for some $\varepsilon>0$.
+\end{theorem}
+
+\begin{proof}[Reduction target]
+Combine:
+\[
+\text{(i) Width--information: } I(X;\mathcal C_t)\le O(w\log n),
+\quad
+\text{(ii) Switching compression: } \Delta I_\sigma \le O(1),
+\]
+with normalization
+\[
+H(X)\le \sum_t I(X;\mathcal T_{t+1}\mid \mathcal T_t),
+\]
+and $H(X)=\Theta(n)$.
+\end{proof}
+
