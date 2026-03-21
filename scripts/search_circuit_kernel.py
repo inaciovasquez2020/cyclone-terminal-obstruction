@@ -38,7 +38,13 @@ def is_circuit(rows: list[int], x: int) -> bool:
         y ^= b
     return True
 
-def xor_rows(rows: list[int], mask: int) -> int:
+def xor_rows(rows: list[int], mask: int, n: int) -> int:
+    out = 0
+    for i in range(n):
+        if (mask >> i) & 1:
+            if i < len(rows):
+                out ^= rows[i]
+    return out
     out = 0
     i = 0
     x = mask
@@ -49,7 +55,8 @@ def xor_rows(rows: list[int], mask: int) -> int:
         i += 1
     return out
 
-def equivalent_kernel(rows: list[int], s1: int, s2: int) -> bool:
+def equivalent_kernel(rows: list[int], s1: int, s2: int, n: int) -> bool:
+    return xor_rows(rows, s1 ^ s2, n) == 0
     return xor_rows(rows, s1 ^ s2) == 0
 
 def enumerate_matrices(n: int, m: int, max_mats: int):
@@ -82,7 +89,7 @@ def search(nmax: int, kmax: int, mmax: int, rank_min: int, max_mats: int):
                     for v in vals:
                         placed = False
                         for cls in classes:
-                            if equivalent_kernel(rows, v, cls[0]):
+                            if equivalent_kernel(rows, v, cls[0], n):
                                 cls.append(v)
                                 placed = True
                                 break
