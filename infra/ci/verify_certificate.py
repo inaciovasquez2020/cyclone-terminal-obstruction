@@ -9,6 +9,6 @@ def verify(cert):
     return True
 
 if __name__ == "__main__":
-    with open("infra/ci/example_certificate.json") as f:
+    with open(os.path.join(os.path.dirname(__file__), "example_certificate.json")) as f:
         cert = json.load(f)
     print({"valid": verify(cert)})
