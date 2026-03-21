@@ -65,3 +65,39 @@ and no superlinear lower bound follows from FO^k-type counting.
 The entropy-depth framework yields tight bounds for linear orders and graphs but is insufficient for SAT. Lower bounds in SAT require non-local methods such as resolution complexity or switching lemmas.
 \end{remark}
 
+
+% Blocking Frontier: Non-local proof systems
+\section{Blocking Frontier: Non-Local Methods}
+
+\begin{definition}[Non-Local Proof System Integration]
+A refinement framework is said to integrate non-local methods if it can simulate or encode proof systems whose inference steps depend on global structure rather than bounded FO$^k$-local neighborhoods.
+\end{definition}
+
+\begin{problem}[Blocking Frontier]
+Extend the entropy-depth framework to incorporate non-local proof systems such as:
+\begin{itemize}
+\item Resolution (width/size tradeoffs)
+\item Switching lemma methods (random restrictions)
+\end{itemize}
+and derive lower bounds of the form:
+\[
+T(n) \ge \Omega(n^{1+\varepsilon})
+\]
+for SAT in the regime $m = \alpha n$.
+\end{problem}
+
+\begin{obstruction}
+FO$^k$-local refinement cannot distinguish instances beyond bounded Gaifman radius, leading to collapse:
+\[
+|\{F' : F' \equiv_k F\}| \ge 2^{\Omega(m)}.
+\]
+Thus any extension must break locality.
+\end{obstruction}
+
+\begin{goal}
+Construct a hybrid model where:
+\[
+\text{Local information flow} + \text{Non-local inference} \;\Rightarrow\; \text{superlinear lower bounds}.
+\]
+\end{goal}
+
