@@ -148,3 +148,35 @@ Determine minimal growth of $C_{\mathsf N}(n)$ enabling:
 \]
 \end{goal}
 
+
+% Resolution embedding
+\subsection{Resolution Embedding}
+
+\begin{definition}[Clause Space State]
+Let $\mathcal C_t$ denote the current clause set in a resolution derivation.
+\end{definition}
+
+\begin{definition}[Resolution Operator $\mathsf R$]
+\[
+\mathsf R(\mathcal C_t) := \mathcal C_t \cup \{(A \vee B)\ :\ (A \vee x)\in \mathcal C_t,\ (B \vee \neg x)\in \mathcal C_t\}.
+\]
+\end{definition}
+
+\begin{lemma}[Width–Information Correspondence]
+If all clauses in $\mathcal C_t$ have width $\le w$, then
+\[
+I(X; \mathcal C_t) \le O(w \log n).
+\]
+\end{lemma}
+
+\begin{goal}
+Show that for random $k$-CNF near threshold, any refutation requires width
+\[
+w \ge \Omega(n),
+\]
+implying
+\[
+T \ge \Omega(n^{1+\varepsilon}).
+\]
+\end{goal}
+
