@@ -1,0 +1,14 @@
+\begin{theorem}[Circuit Uniqueness modulo Kernel]
+Let $A$ be a binary-matroid representation over $\mathbb{F}_2$.
+Let $S,T$ be support-minimal circuits of size $k+1$.
+If
+\[
+\sum_{i\in S} A_{i,\cdot} = \sum_{i\in T} A_{i,\cdot},
+\]
+then $S$ and $T$ are equivalent up to coordinate permutation.
+\end{theorem}
+
+\begin{proof}[Reduction target]
+The search layer shows that raw support uniqueness and operator-value uniqueness both fail in small finite instances, so the correct invariant must be taken modulo the row-dependency kernel.
+The remaining proof obligation is to derive permutation equivalence from equality of row-sums in the minimal support class.
+\end{proof}
