@@ -122,3 +122,29 @@ For suitable SAT families $\{F_n\}$,
 \]
 \end{conjecture}
 
+
+% Formal specification of non-local operator
+\subsection{Non-Local Operator Specification}
+
+\begin{definition}[Non-Local Operator $\mathsf N$]
+A non-local operator $\mathsf N$ acts on a transcript state $\mathcal T_t$ by producing a global constraint:
+\[
+\mathsf N(\mathcal T_t) \;\subseteq\; \Omega
+\]
+such that membership depends on properties not expressible in FO$^k$ over bounded neighborhoods.
+\end{definition}
+
+\begin{axiom}[Capacity Constraint for $\mathsf N$]
+There exists $C_{\mathsf N}(n)$ such that each application satisfies:
+\[
+I(X; \mathsf N(\mathcal T_t) \mid \mathcal T_t) \le C_{\mathsf N}(n).
+\]
+\end{axiom}
+
+\begin{goal}
+Determine minimal growth of $C_{\mathsf N}(n)$ enabling:
+\[
+\sum_{t=1}^T I(X;\mathcal T_{t+1}\mid \mathcal T_t) \ge \Omega(n^{1+\varepsilon}).
+\]
+\end{goal}
+
