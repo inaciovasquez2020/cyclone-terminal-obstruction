@@ -1,1 +1,6 @@
 name = "cyclone-terminal-obstruction"
+version = "0.1.0"
+defaultTargets = ["Cyclone"]
+
+[[lean_lib]]
+name = "Cyclone"
