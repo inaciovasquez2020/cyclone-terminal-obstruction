@@ -7,3 +7,7 @@ package «cyclone-terminal-obstruction»
 
 @[default_target]
 lean_lib Cyclone where
+
+@[default_target]
+lean_exe cyclone where
+ root := `Cyclone
