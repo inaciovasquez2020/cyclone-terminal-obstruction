@@ -59,6 +59,6 @@ def detectCollisions : List (Vertex × Vertex) :=
     | none => acc
   ) []
 
-#eval "Total FO^k_R types: " ++ toString vertexSignatures.size
+#eval "Total FO\$^{k}\$_R types: " ++ toString vertexSignatures.size
 #eval "Collisions (vertices sharing signatures): " ++ toString detectCollisions
 

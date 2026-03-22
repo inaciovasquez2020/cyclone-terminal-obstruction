@@ -11,5 +11,5 @@ by
   let C := detectCollisions.length
   have h : detectCollisions.length ≥ 0 := Nat.zero_le _
   use C
-  -- all extra independent cycles are bounded by repeated FO^k_R signatures
+  -- all extra independent cycles are bounded by repeated FO\$^{k}\$_R signatures
   sorry  -- can be filled once collision list is evaluated

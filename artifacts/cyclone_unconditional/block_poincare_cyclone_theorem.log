@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  18 MAR 2026 12:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  21 MAR 2026 20:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**artifacts/cyclone_unconditional/block_poincare_cyclone_theorem.tex
-(./artifacts/cyclone_unconditional/block_poincare_cyclone_theorem.tex
+**block_poincare_cyclone_theorem.tex
+(./block_poincare_cyclone_theorem.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -121,7 +121,7 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 \l__pdf_internal_box=\box54
 )
-No file block_poincare_cyclone_theorem.aux.
+(./block_poincare_cyclone_theorem.aux)
 \openout1 = `block_poincare_cyclone_theorem.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -139,6 +139,7 @@ LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
+
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -160,13 +161,13 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1795 strings out of 473190
- 25524 string characters out of 5715801
+ 1797 strings out of 473190
+ 25545 string characters out of 5715801
  412359 words of memory out of 5000000
- 25080 multiletter control sequences out of 15000+600000
+ 25081 multiletter control sequences out of 15000+600000
  565983 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,6n,65p,258b,218s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 56i,6n,65p,226b,218s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -178,7 +179,7 @@ al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
 texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
 live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on block_poincare_cyclone_theorem.pdf (1 page, 120680 bytes).
+Output written on block_poincare_cyclone_theorem.pdf (1 page, 120506 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  37 compressed objects within 1 object stream

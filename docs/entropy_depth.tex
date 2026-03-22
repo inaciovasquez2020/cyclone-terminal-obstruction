@@ -1,0 +1,292 @@
+
+
+% Corrected entropy-depth argument
+\begin{theorem}
+Assume FO^k-admissible refinement with
+\[
+\forall t,\; I(X;\mathcal{T}_{t+1}\mid \mathcal{T}_t) \le \frac{C}{\log n},
+\]
+and exact recovery $H(X\mid \mathcal{T}_T)=0$. Then
+\[
+T \ge \frac{\log n}{C} H(X).
+\]
+In particular, if $H(X) \ge c_0 n$, then
+\[
+T = \Omega(n\log n).
+\]
+\end{theorem}
+
+
+% Graph-structured superlinear extension
+\begin{theorem}
+Let $X$ range over graphs on $n$ vertices. Then for $k \ge 3$,
+\[
+\log N_k(n) = \Omega(n^2),
+\]
+and any FO^k-admissible refinement process satisfies
+\[
+T = \Omega(n^2).
+\]
+\end{theorem}
+
+
+% Correction: FO^k class size bound
+\begin{lemma}
+For fixed $k$, FO^k-equivalence classes of graphs satisfy
+\[
+|\{G' : G' \equiv_k G\}| \le 2^{C_k n \log n}.
+\]
+\end{lemma}
+
+\begin{theorem}
+For graphs,
+\[
+\log N_k(n) = \Theta(n^2),
+\quad
+T = \Omega(n^2).
+\]
+\end{theorem}
+
+
+% Correction: SAT limitation of FO^k framework
+\begin{proposition}
+For $k$-CNF with $m = \alpha n$ or $m = n^{1+\varepsilon}$, FO^k-equivalence may collapse exponentially many instances:
+\[
+|\{F' : F' \equiv_k F\}| \ge 2^{\Omega(m)}.
+\]
+Hence
+\[
+\log N_k(\mathrm{SAT}_{n,m}) \not\ge \Omega(m),
+\]
+and no superlinear lower bound follows from FO^k-type counting.
+\end{proposition}
+
+\begin{remark}
+The entropy-depth framework yields tight bounds for linear orders and graphs but is insufficient for SAT. Lower bounds in SAT require non-local methods such as resolution complexity or switching lemmas.
+\end{remark}
+
+
+% Blocking Frontier: Non-local proof systems
+\section{Blocking Frontier: Non-Local Methods}
+
+\begin{definition}[Non-Local Proof System Integration]
+A refinement framework is said to integrate non-local methods if it can simulate or encode proof systems whose inference steps depend on global structure rather than bounded FO$^k$-local neighborhoods.
+\end{definition}
+
+\begin{problem}[Blocking Frontier]
+Extend the entropy-depth framework to incorporate non-local proof systems such as:
+\begin{itemize}
+\item Resolution (width/size tradeoffs)
+\item Switching lemma methods (random restrictions)
+\end{itemize}
+and derive lower bounds of the form:
+\[
+T(n) \ge \Omega(n^{1+\varepsilon})
+\]
+for SAT in the regime $m = \alpha n$.
+\end{problem}
+
+\begin{obstruction}
+FO$^k$-local refinement cannot distinguish instances beyond bounded Gaifman radius, leading to collapse:
+\[
+|\{F' : F' \equiv_k F\}| \ge 2^{\Omega(m)}.
+\]
+Thus any extension must break locality.
+\end{obstruction}
+
+\begin{goal}
+Construct a hybrid model where:
+\[
+\text{Local information flow} + \text{Non-local inference} \;\Rightarrow\; \text{superlinear lower bounds}.
+\]
+\end{goal}
+
+
+% Final open problem: hybrid non-local extension
+\section{Final Open Problem: Non-Local Completion}
+
+\begin{problem}[Hybrid Entropy–Proof Complexity Bridge]
+Construct a model $\mathcal H$ extending FO$^k$-admissible refinement with a non-local operator $\mathsf N$ such that:
+\begin{align*}
+\text{(i)}\;& \mathcal H \text{ simulates resolution or switching-lemma arguments,}\\
+\text{(ii)}\;& \mathcal H \text{ avoids FO}^k\text{-collapse,}\\
+\text{(iii)}\;& T_{\mathcal H}(F_n) \ge \Omega(n^{1+\varepsilon}) \text{ for near-threshold SAT,}\\
+\text{(iv)}\;& \text{Normalization: } T \ge \frac{H(X)}{\text{effective capacity of } \mathcal H}.
+\end{align*}
+\end{problem}
+
+\begin{conjecture}[Non-Local Transfer]
+For suitable SAT families $\{F_n\}$,
+\[
+\mathrm{ResLower}(F_n)\ \Longrightarrow\ T_{\mathcal H}(F_n)\ge \Omega(n^{1+\varepsilon}).
+\]
+\end{conjecture}
+
+
+% Formal specification of non-local operator
+\subsection{Non-Local Operator Specification}
+
+\begin{definition}[Non-Local Operator $\mathsf N$]
+A non-local operator $\mathsf N$ acts on a transcript state $\mathcal T_t$ by producing a global constraint:
+\[
+\mathsf N(\mathcal T_t) \;\subseteq\; \Omega
+\]
+such that membership depends on properties not expressible in FO$^k$ over bounded neighborhoods.
+\end{definition}
+
+\begin{axiom}[Capacity Constraint for $\mathsf N$]
+There exists $C_{\mathsf N}(n)$ such that each application satisfies:
+\[
+I(X; \mathsf N(\mathcal T_t) \mid \mathcal T_t) \le C_{\mathsf N}(n).
+\]
+\end{axiom}
+
+\begin{goal}
+Determine minimal growth of $C_{\mathsf N}(n)$ enabling:
+\[
+\sum_{t=1}^T I(X;\mathcal T_{t+1}\mid \mathcal T_t) \ge \Omega(n^{1+\varepsilon}).
+\]
+\end{goal}
+
+
+% Resolution embedding
+\subsection{Resolution Embedding}
+
+\begin{definition}[Clause Space State]
+Let $\mathcal C_t$ denote the current clause set in a resolution derivation.
+\end{definition}
+
+\begin{definition}[Resolution Operator $\mathsf R$]
+\[
+\mathsf R(\mathcal C_t) := \mathcal C_t \cup \{(A \vee B)\ :\ (A \vee x)\in \mathcal C_t,\ (B \vee \neg x)\in \mathcal C_t\}.
+\]
+\end{definition}
+
+\begin{lemma}[Width–Information Correspondence]
+If all clauses in $\mathcal C_t$ have width $\le w$, then
+\[
+I(X; \mathcal C_t) \le O(w \log n).
+\]
+\end{lemma}
+
+\begin{goal}
+Show that for random $k$-CNF near threshold, any refutation requires width
+\[
+w \ge \Omega(n),
+\]
+implying
+\[
+T \ge \Omega(n^{1+\varepsilon}).
+\]
+\end{goal}
+
+
+% Switching lemma embedding
+\subsection{Switching Lemma Embedding}
+
+\begin{definition}[Random Restriction Operator $\mathsf S_\rho$]
+For $\rho \in [0,1]$, a restriction $\sigma \sim \mathsf S_\rho$ assigns each variable independently:
+\[
+x_i =
+\begin{cases}
+0 & \text{with prob. } \tfrac{1-\rho}{2},\\
+1 & \text{with prob. } \tfrac{1-\rho}{2},\\
+* & \text{with prob. } \rho.
+\end{cases}
+\]
+\end{definition}
+
+\begin{lemma}[Switching Compression]
+Under $\sigma \sim \mathsf S_\rho$, with high probability a $k$-CNF simplifies to a decision tree of depth
+\[
+d = O(\log n).
+\]
+\end{lemma}
+
+\begin{definition}[Switching Information Drop]
+\[
+\Delta I_\sigma := H(X) - H(X \mid \sigma).
+\]
+\end{definition}
+
+\begin{goal}
+Establish that repeated application of $\mathsf S_\rho$ enforces:
+\[
+\sum_{t=1}^T \Delta I_{\sigma_t} \le O\!\left(\frac{n}{\log n}\right)
+\]
+unless $T \ge \Omega(n^{1+\varepsilon}).
+\]
+\end{goal}
+
+
+% Unified transfer theorem (target)
+\subsection{Unified Transfer Theorem}
+
+\begin{theorem}[Resolution/Switching $\Rightarrow$ EntropyDepth]
+Let $\{F_n\}$ be a family of $k$-CNF formulas at clause density $m=\alpha n$.
+
+Assume either:
+\begin{itemize}
+\item[(R)] any resolution refutation of $F_n$ requires width $w \ge c n$, or
+\item[(S)] random restrictions $\mathsf S_\rho$ yield decision-tree depth $d=O(\log n)$ with failure probability $\le n^{-\omega(1)}$.
+\end{itemize}
+
+Then any hybrid refinement process $\mathcal H$ with local FO$^k$ updates and non-local operators $(\mathsf R,\mathsf S_\rho)$ satisfies
+\[
+T_{\mathcal H}(F_n) \;\ge\; \Omega(n^{1+\varepsilon})
+\]
+for some $\varepsilon>0$.
+\end{theorem}
+
+\begin{proof}[Reduction target]
+Combine:
+\[
+\text{(i) Width--information: } I(X;\mathcal C_t)\le O(w\log n),
+\quad
+\text{(ii) Switching compression: } \Delta I_\sigma \le O(1),
+\]
+with normalization
+\[
+H(X)\le \sum_t I(X;\mathcal T_{t+1}\mid \mathcal T_t),
+\]
+and $H(X)=\Theta(n)$.
+\end{proof}
+
+
+% Failure modes and required conditions
+\subsection{Failure Modes and Necessary Conditions}
+
+\begin{proposition}[Frontloading Failure]
+If there exists $t_0 \ll T$ such that
+\[
+\sum_{t=1}^{t_0} I(X;\mathcal T_{t+1}\mid \mathcal T_t) \ge \Theta(n),
+\]
+then no superlinear lower bound follows.
+\end{proposition}
+
+\begin{condition}[No Frontloading]
+Any admissible hybrid process must satisfy
+\[
+\forall t \le T,\quad
+\sum_{i=1}^{t} I(X;\mathcal T_{i+1}\mid \mathcal T_i) \le O\!\left(\frac{t}{T} H(X)\right).
+\]
+\end{condition}
+
+\begin{proposition}[Local Collapse]
+Pure FO$^k$ processes satisfy
+\[
+|\{F' : F' \equiv_k F\}| \ge 2^{\Omega(m)},
+\]
+hence cannot yield superlinear bounds for SAT.
+\end{proposition}
+
+\begin{condition}[Non-Local Necessity]
+Any extension achieving
+\[
+T \ge \Omega(n^{1+\varepsilon})
+\]
+must include operators not reducible to FO$^k$-local queries.
+\end{condition}
+
+\end{document}
+

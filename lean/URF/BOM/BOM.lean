@@ -22,7 +22,7 @@ structure BOMParams where
 /-- Placeholder predicate: G is a (Δ,h)-edge-expander. -/
 def IsCycleExpander (_G : GraphInst) (_exp : ExpanderParams) : Prop := True
 
-/-- Placeholder: FO^k type realization and locality witness property. -/
+/-- Placeholder: FO\$^{k}\$ type realization and locality witness property. -/
 def SupportCompression (_par : BOMParams) (_G : GraphInst) : Prop := True
 
 /-- BOM principle: expander + orank bound implies support compression at radius R. -/

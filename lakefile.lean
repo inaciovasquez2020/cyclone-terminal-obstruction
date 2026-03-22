@@ -1,10 +1,13 @@
 import Lake
 open Lake DSL
 
-package «cyclone-terminal-obstruction» where
-
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git"
+  "https://github.com/leanprover-community/mathlib4" @ "master"
+
+package «cyclone-terminal-obstruction» {}
+
+lean_lib Cyclone
 
 @[default_target]
-lean_lib Cyclone
+lean_exe Main where
+  root := `Main

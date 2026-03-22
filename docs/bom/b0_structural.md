@@ -10,7 +10,7 @@ Structural BOM parameterization
 Assume there exists a function
   B0 = B0(k, Δ, h)
 such that for any (Δ,h)-cycle-expander G and any cycle family C in G with orank(C) ≤ B0,
-every FO^k type realized in G has a witness inside some rooted ball of radius
+every FO\$^{k}\$ type realized in G has a witness inside some rooted ball of radius
   R = R(k, Δ, h).
 
 Replacement of crude counting bound
