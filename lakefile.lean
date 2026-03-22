@@ -1,5 +1,7 @@
+import Lake
+open Lake DSL
 
-package cyclone_terminal_obstruction
+package «cyclone-terminal-obstruction»
 
 @[default_target]
 lean_lib Cyclone where
