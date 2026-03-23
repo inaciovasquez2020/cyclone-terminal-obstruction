@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+
+\begin{definition}[Edge-flip transport cocycle]
+For adjacent $u\sim v$, define
+\[
+\tau_{uv} = \sum_{e\in E(u)\cap E(v)} (\sigma_u(e)+\sigma_v(e)) \in \mathbb F_2.
+\]
+\end{definition}
+
+\begin{lemma}[Cocycle identity]
+\[
+\tau_{uv}+\tau_{vw}+\tau_{wu}=0.
+\]
+\end{lemma}
+
+\begin{lemma}
+$\Phi_{\mathrm{explicit}}$ is injective.
+\end{lemma}
+
+\begin{lemma}
+$\Phi_{\mathrm{explicit}}$ is surjective.
+\end{lemma}
+
+\begin{theorem}
+\[
+\mathcal H_R(G)\cong H^1(B;\mathbb F_2).
+\]
+\end{theorem}
+
+\end{document}
