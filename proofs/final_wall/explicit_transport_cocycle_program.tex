@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\begin{document}
+
+\begin{definition}[Explicit transport cocycle]
+Let $G\to B$ be a CFI lift. For adjacent base vertices $u\sim v$, define
+\[
+\tau_{uv}\in\mathbb F_2
+\]
+to be the parity of the unique edge-flip required to transport the canonical local state on
+\[
+B_R(u)\cap B_R(v)
+\]
+from the $u$-chart to the $v$-chart.
+\end{definition}
+
+\begin{lemma}[Cocycle condition]
+For every closed overlap triple,
+\[
+\tau_{uv}+\tau_{vw}+\tau_{wu}=0.
+\]
+\end{lemma}
+
+\begin{definition}[Transport-to-cohomology map]
+Define
+\[
+\Phi:\mathcal H_R(G)\to H^1(B;\mathbb F_2),
+\qquad
+\Phi([c])=[\tau_c].
+\]
+\end{definition}
+
+\begin{lemma}
+$\Phi$ is injective.
+\end{lemma}
+
+\begin{lemma}
+$\Phi$ is surjective.
+\end{lemma}
+
+\begin{corollary}
+\[
+\mathcal H_R(G)\cong H^1(B;\mathbb F_2).
+\]
+\end{corollary}
+
+\end{document}
