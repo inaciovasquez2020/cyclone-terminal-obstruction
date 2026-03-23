@@ -1,3 +1,4 @@
+import sysnsys.path.append("scripts/cfi")
 import sys
 sys.path.append("scripts/wl")
 sys.path.append("scripts/ef")
