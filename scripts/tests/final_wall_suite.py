@@ -7,15 +7,15 @@ sys.path.append("scripts/algebra")
 from wlk_refinement import type_multiset
 from ef_game import duplicator_wins_k_rounds
 from high_girth_family import trivial_double_cycle, z2_cover_single_flip_cycle
-from multicycle_family import ladder_graph
+from cfi_construction import cfi_pair
 from high_girth_family import trivial_double_cycle, z2_cover_single_flip_cycle
 from cycle_overlap_rank import cycle_overlap_rank
 
 def run():
     rows = []
     for n in [3,4,5]:
-        G1 = ladder_graph(n)
-        G2 = ladder_graph(n+1)
+        G1, G2 = cfi_pair(n)
+        
         wl_equal_r1 = True
         ef22 = duplicator_wins_k_rounds(G1, G2, k=2, rounds=2)
         cr1 = cycle_overlap_rank(G1, R=1)
