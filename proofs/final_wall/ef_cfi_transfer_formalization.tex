@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+
+\section*{EF–CFI Transfer Formalization}
+
+\textbf{State Space:}
+\[
+S_t = (\bar a_t,\bar b_t),\quad
+\bar a_t\in V(G_0)^k,\;\bar b_t\in V(G_1)^k,
+\]
+with partial isomorphism invariant:
+\[
+\forall i,j:\;
+(a_i=a_j)\Leftrightarrow(b_i=b_j),\quad
+E(a_i,a_j)\Leftrightarrow E(b_i,b_j).
+\]
+
+\textbf{Transition Function:}
+\[
+T:\;S_t\times (V(G_0)\cup V(G_1))\to S_{t+1}
+\]
+defined by extending tuples and truncating to last \(k\) entries.
+
+\textbf{Extension Lemma (Tree Neighborhoods):}
+\[
+\mathrm{girth}(B)>2r\Rightarrow
+B_r(v)\cong T_r(v)
+\Rightarrow
+\exists!\;\text{isomorphism extension preserving adjacency}.
+\]
+
+\textbf{Duplicator Response:}
+\[
+\forall \text{ Spoiler move }x\in G_0,\;
+\exists y\in G_1:
+\]
+\[
+B_r(x)\cong B_r(y)
+\;\land\;
+S_{t+1}\text{ remains partial isomorphism}.
+\]
+
+\textbf{CFI Symmetry Invariance:}
+\[
+\text{local automorphisms act transitively on gadget states}
+\Rightarrow
+\text{parity indistinguishable locally}.
+\]
+
+\textbf{Induction:}
+\[
+(\forall t\le k)\;S_t\text{ is partial isomorphism}
+\Rightarrow
+\text{Duplicator wins }k\text{-round EF game}.
+\]
+
+\textbf{Conclusion:}
+\[
+G_0\equiv_{FO^k}G_1.
+\]
+
+\textbf{Status: OPEN (requires formal proof of uniqueness and automorphism action).}
+
+\end{document}
