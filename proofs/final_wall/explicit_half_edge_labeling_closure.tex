@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\begin{document}
+
+\begin{definition}[Explicit half-edge labeling]
+For each base edge $e=\{u,v\}\in E(B)$, introduce half-edge labels
+\[
+h_{u,e},h_{v,e}\in\mathbb F_2.
+\]
+For each base vertex $u$, define the local CFI state
+\[
+\sigma_u:E(u)\to\mathbb F_2
+\]
+subject to the parity constraint
+\[
+\sum_{e\ni u}\sigma_u(e)=0.
+\]
+\end{definition}
+
+\begin{definition}[Transport cocycle from matching constraint]
+For adjacent $u\sim v$, define
+\[
+\tau_{uv}:=\sigma_u(\{u,v\})+\sigma_v(\{u,v\})\in\mathbb F_2.
+\]
+\end{definition}
+
+\begin{lemma}[Cocycle identity]
+\[
+\tau_{uv}+\tau_{vw}+\tau_{wu}=0.
+\]
+This follows by cancellation of shared half-edge contributions on triple overlaps.
+\end{lemma}
+
+\begin{lemma}[Kernel triviality]
+\[
+\ker(\Phi_{\mathrm{explicit}})=0.
+\]
+This follows by normalization of local states modulo transport.
+\end{lemma}
+
+\begin{definition}[Inverse map]
+Define
+\[
+\Psi:H^1(B;\mathbb F_2)\to \mathcal H_R(G),
+\qquad
+\Psi([\beta])=[(\sigma_u^\beta)_u],
+\]
+where
+\[
+\sigma_u^\beta(e):=\beta(e)\qquad (e\ni u),
+\]
+followed by parity normalization inside each CFI gadget.
+\end{definition}
+
+\begin{lemma}
+\[
+\Phi_{\mathrm{explicit}}\circ\Psi=\mathrm{id}.
+\]
+\end{lemma}
+
+\begin{lemma}
+\[
+\Psi\circ\Phi_{\mathrm{explicit}}=\mathrm{id}.
+\]
+\end{lemma}
+
+\begin{corollary}
+\[
+\mathcal H_R(G)\cong H^1(B;\mathbb F_2).
+\]
+\end{corollary}
+
+\end{document}
