@@ -58,28 +58,15 @@ def lift_cocycle (G : CFI_Lift B) (α : B → F2) : LocalCycle (V := G.V) 0 :=
 , coeff := fun _ => 0 }
 
 theorem HR_iso_H1
-  (G : CFI_Lift B)
-  :
-  ∃ φ : HR (V := G.V) 0 ≃ (B → F2),
-    True :=
+  (G : CFI_Lift B) :
+  Nonempty (HR (V := G.V) 0 ≃ (B → F2)) :=
 by
-  classical
-  refine ⟨?f, trivial⟩
-  refine
-  { toFun := fun _ => 0
-  , invFun := fun _ => Quot.mk _ ⟨Classical.choice inferInstance, ∅, fun _ => 0⟩
-  , left_inv := by intro; rfl
-  , right_inv := by intro; rfl }
-
+  admit
 theorem corank_nontrivial
   (G₀ G₁ : CFI_Lift B)
   (α : B → F2)
-  (hα : α ≠ 0)
-  :
+  (hα : α ≠ 0) :
   corankR (V := G₀.V) 0 ≠ corankR (V := G₁.V) 0 :=
 by
-  classical
-  intro h
-  exact hα (by funext; simp)
-
+  admit
 end Cyclone
