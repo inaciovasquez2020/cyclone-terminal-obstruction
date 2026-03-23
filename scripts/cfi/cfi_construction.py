@@ -1,29 +1,67 @@
+def edge_key(u, v):
+    return (u, v) if u <= v else (v, u)
+
 def base_graph(n):
-    G = {i:set() for i in range(n)}
+    G = {i: set() for i in range(n)}
     for i in range(n):
-        G[i].add((i+1)%n); G[(i+1)%n].add(i)
-        G[i].add((i+2)%n); G[(i+2)%n].add(i)
-        G[i].add((i+3)%n); G[(i+3)%n].add(i)
+        for d in (1, 2):
+            j = (i + d) % n
+            G[i].add(j)
+            G[j].add(i)
     return G
 
-def cfi_gadget_lift(G, parity_flip=False):
+def cycle_voltage(G, flip=False):
+    phi = {}
+    for u in G:
+        for v in G[u]:
+            if u < v:
+                e = edge_key(u, v)
+                phi[e] = 0
+    if flip:
+        n = len(G)
+        for i in range(n):
+            e = edge_key(i, (i + 1) % n)
+            if e in phi:
+                phi[e] = 1
+    return phi
+
+def lift_from_voltage(G, phi):
     H = {}
     for v in G:
-        for a in [0,1]:
-            H[(v,a)] = set()
+        for s in (0, 1):
+            H[(v, s)] = set()
 
-    for v in G:
-        parity = (1 if parity_flip and v % 2 == 0 else 0)
-        for u in G[v]:
-            if v < u:
-                for a in [0,1]:
-                    b = a ^ parity
-                    H[(v,a)].add((u,b))
-                    H[(u,b)].add((v,a))
+    lifted_edge_phi = {}
+    for u in G:
+        for v in G[u]:
+            if u < v:
+                e = edge_key(u, v)
+                a = phi.get(e, 0)
+                for s in (0, 1):
+                    x = (u, s)
+                    y = (v, s ^ a)
+                    H[x].add(y)
+                    H[y].add(x)
 
-    lab = {v:i for i,v in enumerate(sorted(H))}
-    return {lab[v]: {lab[u] for u in H[v]} for v in H}
+    lab = {v: i for i, v in enumerate(sorted(H))}
+    K = {}
+    for v in H:
+        K[lab[v]] = {lab[u] for u in H[v]}
 
-def cfi_pair(n):
+    for u in H:
+        for v in H[u]:
+            if lab[u] < lab[v]:
+                bu, _ = u
+                bv, _ = v
+                e = edge_key(bu, bv)
+                lifted_edge_phi[edge_key(lab[u], lab[v])] = phi.get(e, 0)
+
+    return K, lifted_edge_phi
+
+def cfi_data(n):
     B = base_graph(n)
-    return cfi_gadget_lift(B, False), cfi_gadget_lift(B, True)
+    phi0 = cycle_voltage(B, flip=False)
+    phi1 = cycle_voltage(B, flip=True)
+    G1, phiG1 = lift_from_voltage(B, phi0)
+    G2, phiG2 = lift_from_voltage(B, phi1)
+    return G1, G2, phiG1, phiG2
