@@ -24,11 +24,13 @@ def run():
         ef22 = duplicator_wins_k_rounds(G1, G2, k=2, rounds=2)
         cr1 = cycle_overlap_rank(G1, R=1)
         cr2 = cycle_overlap_rank(G2, R=1)
-        from cohomology_invariant import cohomology_signature
+        from cohomology_invariant import cohomology_signature, coboundary_signature
         chi1 = cohomology_signature(G1, {})
         chi2 = cohomology_signature(G2, {(0,1):1})
-        rows.append((n, wl_equal_r1, ef22, cr1, cr2, chi1, chi2))
-    print("n,wl_r1_equal,ef_k2_r2,CR1,CR2,CHI1,CHI2")
+        db1 = coboundary_signature(G1)
+        db2 = coboundary_signature(G2)
+        rows.append((n, wl_equal_r1, ef22, cr1, cr2, chi1, chi2, db1, db2))
+    print("n,wl_r1_equal,ef_k2_r2,CR1,CR2,CHI1,CHI2,DB1,DB2")
     for row in rows:
         print(",".join(map(str, row)))
 
