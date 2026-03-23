@@ -7,7 +7,8 @@ sys.path.append("scripts/algebra")
 from wlk_refinement import type_multiset
 from ef_game import duplicator_wins_k_rounds
 from high_girth_family import trivial_double_cycle, z2_cover_single_flip_cycle
-from theta_graph_family import theta_graph trivial_double_cycle, z2_cover_single_flip_cycle
+from theta_graph_family import theta_graph
+from high_girth_family import trivial_double_cycle, z2_cover_single_flip_cycle
 from cycle_overlap_rank import cycle_overlap_rank
 
 def run():
