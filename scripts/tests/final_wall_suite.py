@@ -1,3 +1,5 @@
+import sys
+sys.path.append("scripts/cohomology")
 from cohomology_invariant import coboundary_signature
 import sys
 sys.path.append("scripts/cohomology")
