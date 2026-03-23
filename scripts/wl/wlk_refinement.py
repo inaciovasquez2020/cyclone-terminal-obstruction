@@ -38,10 +38,10 @@ def rooted_wl_signature(G, root, r=2, rounds=3):
     for _ in range(rounds):
         sigs = {}
         for v in H:
-            sigs[v] = (color[v], tuple(sorted(color[u] for u in H[v])))
+            sigs[v] = (color[v], tuple(tuple(sorted(color[u] for u in H[v]))))
         palette = {s:i for i,s in enumerate(sorted(set(sigs.values())))}
         color = {v: palette[sigs[v]] for v in H}
-    data = sorted((dist[v], color[v], sorted(color[u] for u in H[v])) for v in H)
+    data = sorted((dist[v], color[v], tuple(sorted(color[u] for u in H[v]))) for v in H)
     return tuple(data)
 
 def type_multiset(G, r=2, rounds=3):
