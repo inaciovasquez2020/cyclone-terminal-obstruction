@@ -25,8 +25,8 @@ def run():
         cr1 = cycle_overlap_rank(G1, R=1)
         cr2 = cycle_overlap_rank(G2, R=1)
         from cohomology_invariant import cohomology_signature
-        chi1 = cohomology_signature(G1, [])
-        chi2 = cohomology_signature(G2, [(0,1)])
+        chi1 = cohomology_signature(G1, {})
+        chi2 = cohomology_signature(G2, {(0,1):1})
         rows.append((n, wl_equal_r1, ef22, cr1, cr2, chi1, chi2))
     print("n,wl_r1_equal,ef_k2_r2,CR1,CR2,CHI1,CHI2")
     for row in rows:
