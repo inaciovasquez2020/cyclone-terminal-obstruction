@@ -1,0 +1,140 @@
+\documentclass{article}
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\input{lemmas/tree_extension_and_cfi_transitivity}
+\begin{document}
+
+
+\section*{EF–CFI Transfer Formalization}
+\section*{EF–CFI Transfer Formalization}
+
+
+\textbf{State Space:}
+\textbf{State Space:}
+\[
+\[
+S_t = (\bar a_t,\bar b_t),\quad
+S_t = (\bar a_t,\bar b_t),\quad
+\bar a_t\in V(G_0)^k,\;\bar b_t\in V(G_1)^k,
+\bar a_t\in V(G_0)^k,\;\bar b_t\in V(G_1)^k,
+\]
+\]
+with partial isomorphism invariant:
+with partial isomorphism invariant:
+\[
+\[
+\forall i,j:\;
+\forall i,j:\;
+(a_i=a_j)\Leftrightarrow(b_i=b_j),\quad
+(a_i=a_j)\Leftrightarrow(b_i=b_j),\quad
+E(a_i,a_j)\Leftrightarrow E(b_i,b_j).
+E(a_i,a_j)\Leftrightarrow E(b_i,b_j).
+\]
+\]
+
+
+\textbf{Transition Function:}
+\textbf{Transition Function:}
+\[
+\[
+T:\;S_t\times (V(G_0)\cup V(G_1))\to S_{t+1}
+T:\;S_t\times (V(G_0)\cup V(G_1))\to S_{t+1}
+\]
+\]
+defined by extending tuples and truncating to last \(k\) entries.
+defined by extending tuples and truncating to last \(k\) entries.
+
+
+\textbf{Extension Lemma (Tree Neighborhoods):}
+\textbf{Extension Lemma (Tree Neighborhoods):}
+\[
+\[
+\mathrm{girth}(B)>2r\Rightarrow
+\mathrm{girth}(B)>2r\Rightarrow
+B_r(v)\cong T_r(v)
+B_r(v)\cong T_r(v)
+\Rightarrow
+\Rightarrow
+\exists!\;\text{isomorphism extension preserving adjacency}.
+\exists!\;\text{isomorphism extension preserving adjacency}.
+\]
+\]
+
+
+\textbf{Duplicator Response:}
+\textbf{Duplicator Response:}
+\[
+\[
+\forall \text{ Spoiler move }x\in G_0,\;
+\forall \text{ Spoiler move }x\in G_0,\;
+\exists y\in G_1:
+\exists y\in G_1:
+\]
+\]
+\[
+\[
+B_r(x)\cong B_r(y)
+B_r(x)\cong B_r(y)
+\;\land\;
+\;\land\;
+S_{t+1}\text{ remains partial isomorphism}.
+S_{t+1}\text{ remains partial isomorphism}.
+\]
+\]
+
+
+\textbf{CFI Symmetry Invariance:}
+\textbf{CFI Symmetry Invariance:}
+\[
+\[
+\text{local automorphisms act transitively on gadget states}
+\text{local automorphisms act transitively on gadget states}
+\Rightarrow
+\Rightarrow
+\text{parity indistinguishable locally}.
+\text{parity indistinguishable locally}.
+\]
+\]
+
+
+\textbf{Induction:}
+\textbf{Induction:}
+\[
+\[
+(\forall t\le k)\;S_t\text{ is partial isomorphism}
+(\forall t\le k)\;S_t\text{ is partial isomorphism}
+\Rightarrow
+\Rightarrow
+\text{Duplicator wins }k\text{-round EF game}.
+\text{Duplicator wins }k\text{-round EF game}.
+\]
+\]
+
+
+\textbf{Conclusion:}
+\textbf{Conclusion:}
+\[
+\[
+G_0\equiv_{FO^k}G_1.
+G_0\equiv_{FO^k}G_1.
+\]
+\]
+
+
+\textbf{Status: OPEN (requires formal proof of uniqueness and automorphism action).}
+\textbf{Status: OPEN (requires formal proof of uniqueness and automorphism action).}
+
+
+\begin{theorem}[EF--CFI Separation]
+Let G_0, G_1 be CFI lifts over a common base graph.
+Then G_0 \equiv_{FO^k} G_1 and I(G_0) \neq I(G_1).
+\end{theorem}
+
+\begin{proof}
+FO^k equivalence follows from the EF-game strategy using Lemma~\ref{lem:tree-extension} and Lemma~\ref{lem:cfi-transitivity}.
+Invariant separation follows from the nontrivial cohomology witness.
+\end{proof}
+\end{document}
+\end{document}
