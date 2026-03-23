@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+
+\begin{lemma}[Half-edge cancellation]
+\[
+\tau_{uv}+\tau_{vw}+\tau_{wu}=0.
+\]
+Each half-edge appears exactly twice across the triple overlap and cancels mod $2$.
+\end{lemma}
+
+\begin{definition}[Gauge normalization]
+\[
+\sigma_u^{\mathrm{norm}}(e):=\sigma_u(e)+f(u),
+\]
+where $f:B\to\mathbb F_2$ is chosen so that
+\[
+\sum_{e\ni u}\sigma_u^{\mathrm{norm}}(e)=0
+\]
+and fixed on a spanning tree.
+\end{definition}
+
+\begin{lemma}[Kernel triviality]
+If $\Phi_{\mathrm{explicit}}([c])=0$, then $\sigma_u(e)=f(u)+f(v)$, hence $[c]=0$.
+\end{lemma}
+
+\begin{definition}[Cocycle lifting]
+\[
+\Psi([\beta])=[(\sigma_u^\beta)_u],\qquad
+\sigma_u^\beta(e)=\beta(e)+f(u).
+\]
+\end{definition}
+
+\begin{lemma}
+\[
+\Phi_{\mathrm{explicit}}\circ\Psi=\mathrm{id},\qquad
+\Psi\circ\Phi_{\mathrm{explicit}}=\mathrm{id}.
+\]
+\end{lemma}
+
+\begin{theorem}
+\[
+\mathcal H_R(G)\cong H^1(B;\mathbb F_2).
+\]
+\end{theorem}
+
+\end{document}
