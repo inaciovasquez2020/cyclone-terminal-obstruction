@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\begin{lemma}[Unique Extension of Rooted Tree Isomorphism]
+Let $(T_1,r_1),(T_2,r_2)$ be rooted trees of maximum degree $\Delta$.
+Let $\varphi_0:\{r_1\}\to\{r_2\}$ be the root map.
+Assume for every vertex $v\in T_1$ the multiset of isomorphism types of rooted subtrees at children of $v$
+coincides with that of $\varphi(v)$ in $T_2$.
+Then there exists a unique isomorphism $\varphi:T_1\to T_2$ extending $\varphi_0$.
+\end{lemma}
+
+\begin{proof}
+Define $\varphi$ inductively by depth. At depth $0$, $\varphi(r_1)=r_2$.
+Assume $\varphi$ defined on all vertices at depth $\le d$.
+Let $v$ be at depth $d$, $\varphi(v)=w$.
+Let $C(v),C(w)$ be children sets. By hypothesis, there exists a bijection
+$\psi_v:C(v)\to C(w)$ preserving rooted subtree types.
+For $u\in C(v)$, define $\varphi(u):=\psi_v(u)$.
+This defines $\varphi$ on depth $d+1$.
+By induction, $\varphi$ exists on all vertices.
+Uniqueness follows since $\psi_v$ is uniquely determined at each step.
+\end{proof}
+
+\begin{lemma}[Transitivity of CFI Gadget Automorphisms]
+Let $G_{\mathrm{CFI}}(v)$ be the CFI gadget at vertex $v$ of degree $d$.
+Let $S_v$ be the set of local states (valid parity assignments).
+Then $\mathrm{Aut}(G_{\mathrm{CFI}}(v))$ acts transitively on $S_v$.
+\end{lemma}
+
+\begin{proof}
+Model $S_v=\{x\in\mathbb{F}_2^d:\sum x_i=0\}$.
+For $i\neq j$, define $\tau_{ij}$ by $\tau_{ij}(x)=x+e_i+e_j$.
+These preserve parity, hence lie in $\mathrm{Aut}$.
+They generate translations $x\mapsto x+y$ for all $y\in S_v$.
+Thus any $x'$ equals $x+y$ for some $y$, proving transitivity.
+\end{proof}
+
+\end{document}
