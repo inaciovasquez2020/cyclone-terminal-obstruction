@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\begin{document}
+
+\begin{axiom}[Local--Global Transport Rigidity]
+Fix $k,\Delta$. There exists $R=R(k,\Delta)$ such that for every bounded-degree CFI lift $G\to B$,
+there is a canonical edge-indexed map $\tau:E(B)\to \mathbb F_2$ satisfying:
+\begin{enumerate}
+\item $\tau_{uv}$ is determined by the parity defect of the canonical identification on $B_R(u)\cap B_R(v)$.
+\item $\tau_{uv}+\tau_{vw}+\tau_{wu}=0$ on every closed overlap $2$-cell.
+\item $\tau$ depends only on the transport class in $\mathcal H_R(G)$.
+\item $[\tau]=0$ iff the transport class is globally trivial.
+\end{enumerate}
+\end{axiom}
+
+\[
+\Phi:\mathcal H_R(G)\to H^1(B;\mathbb F_2),\qquad \Phi([c])=[\tau_c].
+\]
+
+\begin{lemma}
+$\Phi$ is well-defined.
+\end{lemma}
+
+\begin{lemma}
+$\Phi$ is injective.
+\end{lemma}
+
+\begin{lemma}
+$\Phi$ is surjective.
+\end{lemma}
+
+\begin{corollary}
+$\mathcal H_R(G)\cong H^1(B;\mathbb F_2)$.
+\end{corollary}
+
+\end{document}
