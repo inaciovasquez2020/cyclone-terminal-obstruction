@@ -1,3 +1,4 @@
+from cohomology_invariant import coboundary_signature
 import sys
 sys.path.append("scripts/cohomology")
 import sys
@@ -24,9 +25,6 @@ def run():
         ef22 = duplicator_wins_k_rounds(G1, G2, k=2, rounds=2)
         cr1 = cycle_overlap_rank(G1, R=1)
         cr2 = cycle_overlap_rank(G2, R=1)
-        from cohomology_invariant import cohomology_signature, coboundary_signature
-        chi1 = cohomology_signature(G1, {})
-        chi2 = cohomology_signature(G2, {(0,1):1})
         db1 = coboundary_signature(G1)
         db2 = coboundary_signature(G2)
         rows.append((n, wl_equal_r1, ef22, cr1, cr2, chi1, chi2, db1, db2))
