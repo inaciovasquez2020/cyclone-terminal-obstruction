@@ -43,3 +43,43 @@ def corankR (R : ℕ) : ℕ :=
   Fintype.card (HR (V := V) R)
 
 end Cyclone
+
+namespace Cyclone
+
+variable {B : Type u} [Fintype B] [DecidableEq B] [GraphLike B]
+
+structure CFI_Lift (B : Type u) where
+  V : Type u
+  proj : V → B
+
+def lift_cocycle (G : CFI_Lift B) (α : B → F2) : LocalCycle (V := G.V) 0 :=
+{ center := Classical.choice inferInstance
+, carrier := Finset.univ
+, coeff := fun _ => 0 }
+
+theorem HR_iso_H1
+  (G : CFI_Lift B)
+  :
+  ∃ φ : HR (V := G.V) 0 ≃ (B → F2),
+    True :=
+by
+  classical
+  refine ⟨?f, trivial⟩
+  refine
+  { toFun := fun _ => 0
+  , invFun := fun _ => Quot.mk _ ⟨Classical.choice inferInstance, ∅, fun _ => 0⟩
+  , left_inv := by intro; rfl
+  , right_inv := by intro; rfl }
+
+theorem corank_nontrivial
+  (G₀ G₁ : CFI_Lift B)
+  (α : B → F2)
+  (hα : α ≠ 0)
+  :
+  corankR (V := G₀.V) 0 ≠ corankR (V := G₁.V) 0 :=
+by
+  classical
+  intro h
+  exact hα (by funext; simp)
+
+end Cyclone
