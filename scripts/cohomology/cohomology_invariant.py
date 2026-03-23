@@ -1,3 +1,5 @@
+import sys
+sys.path.append("scripts/algebra")
 from cycle_overlap_rank import fundamental_cycles
 
 def edge_key(u, v):
