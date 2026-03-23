@@ -1,8 +1,9 @@
-def base_cycle(n):
+def base_3regular(n):
     G = {i:set() for i in range(n)}
     for i in range(n):
-        j = (i+1)%n
-        G[i].add(j); G[j].add(i)
+        G[i].add((i+1)%n); G[(i+1)%n].add(i)
+        G[i].add((i+2)%n); G[(i+2)%n].add(i)
+        G[i].add((i+3)%n); G[(i+3)%n].add(i)
     return G
 
 def cfi_lift(G, flip=False):
@@ -13,20 +14,14 @@ def cfi_lift(G, flip=False):
     for u in G:
         for v in G[u]:
             if u < v:
-                if flip and (u+v)%2==0:
-                    for p in [0,1]:
-                        H[(u,p)].add((v,p^1))
-                        H[(v,p^1)].add((u,p))
-                else:
-                    for p in [0,1]:
-                        H[(u,p)].add((v,p))
-                        H[(v,p)].add((u,p))
+                parity = (u + v) % 2
+                for p in [0,1]:
+                    q = p ^ (parity if flip else 0)
+                    H[(u,p)].add((v,q))
+                    H[(v,q)].add((u,p))
     lab = {v:i for i,v in enumerate(sorted(H))}
-    K = {}
-    for v in H:
-        K[lab[v]] = {lab[u] for u in H[v]}
-    return K
+    return {lab[v]: {lab[u] for u in H[v]} for v in H}
 
 def cfi_pair(n):
-    B = base_cycle(n)
+    B = base_3regular(n)
     return cfi_lift(B, False), cfi_lift(B, True)
