@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+
+\title{Deterministic Closure Obstruction via CFI-Type Local--Global Decoupling}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We record the deterministic-closure obstruction in a corrected formal form. For every fixed locality radius \(R\) and variable bound \(k\), we construct an explicit infinite family of bounded-degree graph pairs \((G_0^{(n)},G_1^{(n)})\) with identical rooted \(R\)-ball multisets and hence identical deterministic \(\mathrm{FO}^k\)-local transcript data, but with distinct global parity invariant. The witness family is given by CFI-type parity twists over high-girth bounded-degree base graphs. This yields a local--global decoupling theorem: no deterministic \(\mathrm{FO}^k\)-local refinement rule can recover the global invariant from the local transcript. Therefore deterministic closure fails in the refinement-only regime.
+\end{abstract}
+
+\section{Setup}
+
+Fix integers \(R\ge 1\) and \(k\ge 1\). Let \(\mathcal G\) denote the class of finite graphs.
+
+\begin{definition}[Rooted \(R\)-ball multiset]
+For a graph \(G\) and \(v\in V(G)\), let \(B_R^G(v)\) denote the rooted radius-\(R\) neighborhood of \(v\). Define
+\[
+T_R(G):=\big\{\,[B_R^G(v)]_{\cong}\ :\ v\in V(G)\,\big\},
+\]
+the multiset of rooted isomorphism classes of radius-\(R\) balls.
+\end{definition}
+
+\begin{definition}[Deterministic \(\mathrm{FO}^k\)-local refinement]
+A deterministic \(\mathrm{FO}^k\)-local refinement rule at locality radius \(R\) is any map
+\[
+\mathcal A:\mathcal G\to \mathcal O
+\]
+whose output depends only on the rooted radius-\(R\) local transcript. Equivalently, there exists a function
+\[
+f_R
+\]
+such that
+\[
+\mathcal A(G)=f_R(T_R(G))
+\]
+for all \(G\in\mathcal G\).
+\end{definition}
+
+This is the only dependence property needed for the obstruction argument.
+
+\section{Base graphs and CFI parity gadgets}
+
+Let \(B\) be a connected \(d\)-regular graph with \(d\ge 3\) and girth
+\[
+\mathrm{girth}(B)>2R.
+\]
+We will later take an infinite family \(B_n\) with uniformly bounded degree and girth tending to infinity.
+
+For each vertex \(v\in V(B)\), let \(E(v)\) denote the set of incident edges. For \(i\in\{0,1\}\), define the vertex set
+\[
+V(G_i):=\{(v,\alpha)\ :\ v\in V(B),\ \alpha:E(v)\to \mathbb F_2,\ \sum_{e\in E(v)}\alpha(e)=i\}.
+\]
+Thus each base vertex \(v\) is replaced by the parity class of all local edge-labelings of parity \(i\).
+
+For each base edge \(e=uv\in E(B)\), add an edge in \(G_i\) between \((u,\beta)\) and \((v,\alpha)\) whenever
+\[
+\beta(e)=\alpha(e).
+\]
+This is the standard parity-consistent CFI gluing rule.
+
+\begin{remark}
+The graph \(G_0\) is the even-parity lift and \(G_1\) is the odd-parity lift. Both have bounded degree depending only on \(d\), and
+\[
+|V(G_i)|=|V(B)|\,2^{d-1}.
+\]
+\end{remark}
+
+\section{Local coincidence}
+
+\begin{lemma}[Radius-\(R\) rooted balls coincide]
+If \(\mathrm{girth}(B)>2R\), then
+\[
+T_R(G_0)=T_R(G_1).
+\]
+\end{lemma}
+
+\begin{proof}
+Fix \(v\in V(B)\) and vertices \((v,\alpha_0)\in V(G_0)\), \((v,\alpha_1)\in V(G_1)\). Because \(\mathrm{girth}(B)>2R\), the radius-\(R\) neighborhood of \(v\) in \(B\) is a tree. Hence every lift of this neighborhood to either \(G_0\) or \(G_1\) is determined recursively from the root choice, with no cycle constraints encountered inside depth \(R\).
+
+At each step away from the root, a child choice is determined by one shared edge-bit and free choices on the remaining \(d-1\) incident edges subject to one parity equation. Therefore the rooted branching pattern is identical in \(G_0\) and \(G_1\). Since there are no cycles within radius \(R\), no contradiction can arise from transporting the local labeling data.
+
+Thus
+\[
+B_R^{G_0}(v,\alpha_0)\cong B_R^{G_1}(v,\alpha_1)
+\]
+as rooted graphs. Since this holds at every root, the multisets of rooted \(R\)-ball isomorphism types coincide:
+\[
+T_R(G_0)=T_R(G_1).
+\]
+\end{proof}
+
+\section{Global invariant}
+
+Fix a spanning tree \(T\subseteq B\). For any realization \(G\) of the parity construction above, define the twist bit on a non-tree edge \(e=uv\in E(B)\setminus E(T)\) by transporting the local labels from a chosen root along the unique tree paths in \(T\) to \(u\) and \(v\), then comparing the edge-bit assigned to \(e\) at the two endpoints. This yields a bit
+\[
+\tau_G(e)\in \mathbb F_2.
+\]
+Define the parity invariant
+\[
+I(G):=\sum_{e\in E(B)\setminus E(T)} \tau_G(e)\pmod 2.
+\]
+
+\begin{lemma}[Well-definedness]
+The invariant \(I(G)\) is independent of the root choice and of the transported representatives.
+\end{lemma}
+
+\begin{proof}
+Changing the root or transported representatives modifies the local edge-bit system by a coboundary on the base graph \(B\). The induced change on the vector \((\tau_G(e))_{e\notin T}\) is addition of a cut-space element. Summing over the fundamental cycle coordinates modulo \(2\) is invariant under such coboundary changes. Hence \(I(G)\) is well-defined.
+\end{proof}
+
+\begin{lemma}[Parity separation]
+For the two parity lifts \(G_0,G_1\),
+\[
+I(G_0)\neq I(G_1).
+\]
+\end{lemma}
+
+\begin{proof}
+By construction, the even lift \(G_0\) has trivial total parity class, while the odd lift \(G_1\) differs from it by the unique nontrivial global parity twist. In the spanning-tree coordinate system, this changes the total parity on the fundamental cycle coordinates by \(1\in\mathbb F_2\). Therefore
+\[
+I(G_0)=0,\qquad I(G_1)=1.
+\]
+Hence \(I(G_0)\neq I(G_1)\).
+\end{proof}
+
+\section{\(\mathrm{FO}^k\)-local indistinguishability}
+
+\begin{lemma}[Local logic cannot separate the pair]
+For fixed \(R,k\), if \(\mathrm{girth}(B)>2R\), then
+\[
+G_0\equiv_{\mathrm{FO}^k_R} G_1.
+\]
+\end{lemma}
+
+\begin{proof}
+A formula in \(\mathrm{FO}^k\) of locality radius \(R\) only inspects rooted radius-\(R\) neighborhoods and the incidence relations among finitely many pebbled points inside such neighborhoods. Since all rooted radius-\(R\) neighborhoods agree between \(G_0\) and \(G_1\), the duplicator can respond in the \(k\)-pebble \(R\)-round Ehrenfeucht--Fra\"\i ss\'e game by matching the corresponding rooted tree pattern at each move.
+
+Because the base graph has girth \(>2R\), these neighborhoods are tree-like and contain no conflicting cycle witness visible within radius \(R\). Thus the duplicator preserves partial isomorphism for all \(R\) rounds. Therefore
+\[
+G_0\equiv_{\mathrm{FO}^k_R} G_1.
+\]
+\end{proof}
+
+\section{Deterministic closure obstruction}
+
+\begin{theorem}[Deterministic closure fails]
+For every fixed \(R,k\), there exists an explicit infinite family of bounded-degree graph pairs
+\[
+\{(G_0^{(n)},G_1^{(n)})\}_{n\ge 1}
+\]
+such that
+\[
+T_R(G_0^{(n)})=T_R(G_1^{(n)}),
+\]
+\[
+G_0^{(n)}\equiv_{\mathrm{FO}^k_R} G_1^{(n)},
+\]
+\[
+I(G_0^{(n)})\neq I(G_1^{(n)}).
+\]
+Consequently, no deterministic \(\mathrm{FO}^k\)-local refinement rule can recover the invariant \(I\) from the local transcript.
+\end{theorem}
+
+\begin{proof}
+Choose any explicit infinite family \((B_n)\) of bounded-degree graphs with girth tending to infinity, for example any explicit \(d\)-regular high-girth family. For \(n\) large enough that
+\[
+\mathrm{girth}(B_n)>2R,
+\]
+construct the corresponding parity lifts \(G_0^{(n)},G_1^{(n)}\).
+
+By the previous lemmas,
+\[
+T_R(G_0^{(n)})=T_R(G_1^{(n)}),
+\qquad
+G_0^{(n)}\equiv_{\mathrm{FO}^k_R} G_1^{(n)},
+\qquad
+I(G_0^{(n)})\neq I(G_1^{(n)}).
+\]
+
+Now let \(\mathcal A\) be any deterministic \(\mathrm{FO}^k\)-local refinement rule. By definition there exists a function \(f_R\) such that
+\[
+\mathcal A(G)=f_R(T_R(G)).
+\]
+Hence
+\[
+\mathcal A(G_0^{(n)})=f_R(T_R(G_0^{(n)}))=f_R(T_R(G_1^{(n)}))=\mathcal A(G_1^{(n)}).
+\]
+Therefore \(\mathcal A\) cannot distinguish the pair, while the global invariant does distinguish the pair:
+\[
+I(G_0^{(n)})\neq I(G_1^{(n)}).
+\]
+So \(I\) is not determined by the deterministic local transcript. Deterministic closure fails.
+\end{proof}
+
+\section{Closed-form consequence}
+
+\begin{corollary}[Local--global decoupling]
+For every fixed \(R\),
+\[
+I(G)\notin \sigma(T_R(G))
+\]
+on the witness family. Equivalently,
+\[
+\not\exists f:\operatorname{Im}(T_R)\to \mathbb F_2
+\quad\text{such that}\quad
+f(T_R(G))=I(G)
+\]
+for all graphs \(G\) in the witness family.
+\end{corollary}
+
+\begin{proof}
+If such an \(f\) existed, then identical \(T_R\)-data would force identical \(I\)-values. This contradicts
+\[
+T_R(G_0^{(n)})=T_R(G_1^{(n)})
+\quad\text{and}\quad
+I(G_0^{(n)})\neq I(G_1^{(n)}).
+\]
+\end{proof}
+
+\section{Status statement}
+
+The deterministic closure claim in the local refinement regime is therefore false in full generality. The obstruction is explicit, bounded-degree, infinite, and CFI-realized.
+
+\[
+\boxed{\text{Deterministic closure fails for local refinement systems.}}
+\]
+
+\end{document}
