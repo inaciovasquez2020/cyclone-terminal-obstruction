@@ -52,3 +52,12 @@ theorem Cyclone_final_theorem
   exact Cyclone_contradiction_fin' G σ k hG
 
 end Oblivion
+
+theorem treePathChain_boundary_zero_of_parent_path
+  (G : FinGraph) (r u v : G.V)
+  (hu : True)
+  (hv : True) :
+  boundaryMap G (treePathChainBFS G r u v) = 0
+:= by
+  simpa using treePathChain_boundary_zero G r u v
+
