@@ -84,3 +84,15 @@ theorem ConstructiveCycloneClosure_of_parity_and_EF
   rcases hParity hG with ⟨α, hvan, hnon⟩
   exact ⟨α, hFO hG, hvan, hnon⟩
 
+
+axiom EF_high_girth_strategy :
+  ∀ (G : Graph) (σ : (x y : G.V) → Bool) (k : ℕ),
+    Graph.girth G > (2^(k+1) : ℕ) →
+    FO_equiv (Graph.twoLift G (fun _ _ => false)) (Graph.twoLift G σ) k
+
+axiom parity_from_cycle_basis :
+  ∀ (G : Graph) (σ : (x y : G.V) → Bool),
+    ∃ (α : C1 (Graph.twoLift G σ) →ₗ[𝔽₂] 𝔽₂),
+      (∀ z ∈ Z1 (Graph.twoLift G (fun _ _ => false)), α z = 0) ∧
+      (∃ z ∈ Z1 (Graph.twoLift G σ), α z ≠ 0)
+
