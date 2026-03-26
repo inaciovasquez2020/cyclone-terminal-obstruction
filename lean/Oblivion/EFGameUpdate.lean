@@ -14,3 +14,17 @@ def DuplicatorWins (G₀ G₁ : Graph) : ℕ → PartialIso G₀ G₁ → Prop
           p.codom ⊆ p'.codom ∧
           DuplicatorWins G₀ G₁ k p')
 
+
+def Extends (G₀ G₁ : Graph) (p p' : PartialIso G₀ G₁) : Prop :=
+  p.dom ⊆ p'.dom ∧
+  p.codom ⊆ p'.codom
+
+theorem duplicator_step
+  (G₀ G₁ : Graph) (k : ℕ) (p : PartialIso G₀ G₁) :
+  DuplicatorWins G₀ G₁ (Nat.succ k) p →
+  (∀ v₀ : G₀.V, ∃ v₁ p', Extends G₀ G₁ p p' ∧ DuplicatorWins G₀ G₁ k p') ∧
+  (∀ v₁ : G₁.V, ∃ v₀ p', Extends G₀ G₁ p p' ∧ DuplicatorWins G₀ G₁ k p')
+:= by
+  intro h
+  exact h
+
