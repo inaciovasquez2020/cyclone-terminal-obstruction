@@ -27,3 +27,14 @@ axiom graphSTX_twist_separation :
     ∃ (α : C1 G₁ →ₗ[𝔽₂] 𝔽₂),
       α ≠ 0
 
+
+axiom graphSTX_parity_separation :
+  ∀ (G : Graph) (σ : (x y : G.V) → Bool),
+    graphSTX G →
+    let G₀ := Graph.twoLift G (fun _ _ => false)
+    let G₁ := Graph.twoLift G σ
+    ∃ (α : C1 G₁ →ₗ[𝔽₂] 𝔽₂),
+      α ≠ 0 ∧
+      α vanishesOn (Z1 G₀) ∧
+      ¬ α vanishesOn (Z1 G₁)
+
