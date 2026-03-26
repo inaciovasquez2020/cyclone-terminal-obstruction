@@ -21,3 +21,5 @@ import Oblivion.CycloneConstructiveNext
 import Oblivion.CycloneFinalClosure
 
 import Oblivion.CycloneBoundaryClosure
+
+import Oblivion.CycloneEndpointCancellation
