@@ -38,3 +38,8 @@ axiom graphSTX_parity_separation :
       α vanishesOn (Z1 G₀) ∧
       ¬ α vanishesOn (Z1 G₁)
 
+
+axiom twistParityLinear :
+  ∀ (G : Graph) (σ : (x y : G.V) → Bool),
+    C1 (Graph.twoLift G σ) →ₗ[𝔽₂] 𝔽₂
+
