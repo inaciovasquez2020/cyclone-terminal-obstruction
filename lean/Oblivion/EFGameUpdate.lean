@@ -38,3 +38,10 @@ theorem duplicator_monotone
   intro _ h
   exact h
 
+
+theorem duplicator_zero_base
+  (G₀ G₁ : Graph) (p : PartialIso G₀ G₁) :
+  DuplicatorWins G₀ G₁ 0 p
+:= by
+  trivial
+
