@@ -98,3 +98,12 @@ theorem localSpan_eq_bot_of_Z1_eq_bot
   subst hZ
   simp
 
+
+theorem girth_localSpan_trivial
+  (G : FinGraph) (R : ℕ) (v : G.V)
+  (h : Graph.girth G > (2 * R : ℕ)) :
+  localSpan G R v = ⊥
+:= by
+  apply localSpan_eq_bot_of_Z1_eq_bot
+  exact girth_gt_2R_local_acyclic G R v h
+
