@@ -47,3 +47,44 @@ def boundaryMap (G : FinGraph) : C1 G →ₗ[𝔽₂] C0 G :=
 def Z1 (G : FinGraph) : Submodule 𝔽₂ (C1 G) :=
   LinearMap.ker (boundaryMap G)
 
+
+theorem girth_gt_2R_local_acyclic
+  (G : FinGraph) (R : ℕ) (v : G.V)
+  (h : Graph.girth G > (2 * R : ℕ)) :
+  Z1 (inducedSubgraph G (ball G R v)) = ⊥
+:= by
+  admit
+
+def localSpan (G : FinGraph) (R : ℕ) (v : G.V) :=
+  Submodule.span 𝔽₂ {f : C1 G | f ∈ Z1 (inducedSubgraph G (ball G R v))}
+
+theorem localSpan_trivial
+  (G : FinGraph) (R : ℕ) (v : G.V)
+  (h : Graph.girth G > (2 * R : ℕ)) :
+  localSpan G R v = ⊥
+:= by
+  admit
+
+def explicitTwoLift (G : FinGraph) (σ : G.E → Bool) : FinGraph :=
+{ V := G.V × Bool,
+  E := G.E × Bool,
+  src := fun ⟨e,b⟩ => (G.src e, b),
+  dst := fun ⟨e,b⟩ => (G.dst e, bxor b (σ e)),
+  finite_V := inferInstance,
+  finite_E := inferInstance,
+  decEq_V := inferInstance,
+  decEq_E := inferInstance,
+  Adj := fun x y =>
+    ∃ e b, ((G.src e, b) = x ∧ (G.dst e, bxor b (σ e)) = y) ∨
+           ((G.dst e, bxor b (σ e)) = x ∧ (G.src e, b) = y),
+  adj_iff := by intro; constructor <;> intro <;> trivial }
+
+def I (G : FinGraph) : ℕ :=
+  Module.rank 𝔽₂ (Z1 G)
+
+theorem I_separates_lifts
+  (G : FinGraph) (σ : G.E → Bool) :
+  I (explicitTwoLift G (fun _ => false)) ≠ I (explicitTwoLift G σ)
+:= by
+  admit
+
