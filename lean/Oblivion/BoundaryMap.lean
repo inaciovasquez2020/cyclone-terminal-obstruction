@@ -107,3 +107,13 @@ theorem girth_localSpan_trivial
   apply localSpan_eq_bot_of_Z1_eq_bot
   exact girth_gt_2R_local_acyclic G R v h
 
+
+theorem I_local_vanish
+  (G : FinGraph) (R : ℕ) (v : G.V)
+  (h : Graph.girth G > (2 * R : ℕ)) :
+  Module.rank 𝔽₂ (localSpan G R v) = 0
+:= by
+  have hbot : localSpan G R v = ⊥ := girth_localSpan_trivial G R v h
+  subst hbot
+  simp
+
