@@ -59,3 +59,28 @@ theorem Cyclone_contradiction_unconditional :
   rcases Cyclone_unconditional G σ k hG with ⟨α, hFO, hSep⟩
   exact ⟨hFO, hSep⟩
 
+
+theorem ConstructiveCycloneClosure_of_parity_and_EF
+  (G : Graph) (σ : (x y : G.V) → Bool) (k : ℕ)
+  (hFO :
+    Graph.girth G > (2^(k+1) : ℕ) →
+    FO_equiv (Graph.twoLift G (fun _ _ => false)) (Graph.twoLift G σ) k)
+  (hParity :
+    Graph.girth G > (2^(k+1) : ℕ) →
+    let G₀ := Graph.twoLift G (fun _ _ => false)
+    let G₁ := Graph.twoLift G σ
+    ∃ (α : C1 G₁ →ₗ[𝔽₂] 𝔽₂),
+      (∀ z ∈ Z1 G₀, α z = 0) ∧
+      (∃ z ∈ Z1 G₁, α z ≠ 0)) :
+  Graph.girth G > (2^(k+1) : ℕ) →
+  let G₀ := Graph.twoLift G (fun _ _ => false)
+  let G₁ := Graph.twoLift G σ
+  ∃ (α : C1 G₁ →ₗ[𝔽₂] 𝔽₂),
+    FO_equiv G₀ G₁ k ∧
+    (∀ z ∈ Z1 G₀, α z = 0) ∧
+    (∃ z ∈ Z1 G₁, α z ≠ 0) := by
+  intro hG
+  dsimp
+  rcases hParity hG with ⟨α, hvan, hnon⟩
+  exact ⟨α, hFO hG, hvan, hnon⟩
+
