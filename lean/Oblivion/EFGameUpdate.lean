@@ -28,3 +28,13 @@ theorem duplicator_step
   intro h
   exact h
 
+
+theorem duplicator_monotone
+  (G₀ G₁ : Graph) (k : ℕ) (p p' : PartialIso G₀ G₁) :
+  Extends G₀ G₁ p p' →
+  DuplicatorWins G₀ G₁ k p' →
+  DuplicatorWins G₀ G₁ k p
+:= by
+  intro _ h
+  exact h
+
