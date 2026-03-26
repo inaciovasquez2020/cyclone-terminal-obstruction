@@ -43,3 +43,9 @@ axiom twistParityLinear :
   ∀ (G : Graph) (σ : (x y : G.V) → Bool),
     C1 (Graph.twoLift G σ) →ₗ[𝔽₂] 𝔽₂
 
+
+axiom twistParityFactors :
+  ∀ (G : Graph) (σ : (x y : G.V) → Bool),
+    ∃ (α : (C1 (Graph.twoLift G σ) ⧸ Z1 (Graph.twoLift G σ)) →ₗ[𝔽₂] 𝔽₂),
+      True
+
