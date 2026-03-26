@@ -31,3 +31,19 @@ class FinGraph extends Graph where
   adj_iff :
     ∀ u v : V, Adj u v ↔ ∃ e : E, (src e = u ∧ dst e = v) ∨ (src e = v ∧ dst e = u)
 
+
+variable {G : FinGraph}
+
+def C0 (G : FinGraph) := G.V → 𝔽₂
+def C1 (G : FinGraph) := G.E → 𝔽₂
+
+def boundaryMap (G : FinGraph) : C1 G →ₗ[𝔽₂] C0 G :=
+{ toFun := fun f v =>
+    ∑ e, (if G.src e = v then f e else 0) +
+          (if G.dst e = v then f e else 0),
+  map_add' := by intros; funext v; simp,
+  map_smul' := by intros; funext v; simp }
+
+def Z1 (G : FinGraph) : Submodule 𝔽₂ (C1 G) :=
+  LinearMap.ker (boundaryMap G)
+
