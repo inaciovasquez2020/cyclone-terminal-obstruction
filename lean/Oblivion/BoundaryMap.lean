@@ -88,3 +88,13 @@ theorem I_separates_lifts
 := by
   admit
 
+
+theorem localSpan_eq_bot_of_Z1_eq_bot
+  (G : FinGraph) (R : ℕ) (v : G.V)
+  (hZ : Z1 (inducedSubgraph G (ball G R v)) = ⊥) :
+  localSpan G R v = ⊥
+:= by
+  unfold localSpan
+  subst hZ
+  simp
+
