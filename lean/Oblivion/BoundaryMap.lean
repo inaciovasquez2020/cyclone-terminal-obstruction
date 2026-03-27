@@ -133,3 +133,15 @@ def boundaryMap (G : FinGraph) : C1 G →ₗ[𝔽₂] C0 G :=
 def Z1 (G : FinGraph) : Submodule 𝔽₂ (C1 G) :=
   LinearMap.ker (boundaryMap G)
 
+
+noncomputable def dimZ1 (G : FinGraph) [Fintype G.E] :=
+  FiniteDimensional.finrank 𝔽₂ (Z1 G)
+
+theorem dimZ1_def (G : FinGraph) [Fintype G.E] :
+    dimZ1 G = FiniteDimensional.finrank 𝔽₂ (Z1 G) := rfl
+
+theorem beta1_eq_dimZ1
+    (G : FinGraph)
+    [Fintype G.V] [Fintype G.E] :
+    β₁ G = dimZ1 G := by
+  sorry
