@@ -145,3 +145,33 @@ theorem beta1_eq_dimZ1
     [Fintype G.V] [Fintype G.E] :
     β₁ G = dimZ1 G := by
   sorry
+
+open FiniteDimensional
+
+noncomputable def dimC0 (G : FinGraph) [Fintype G.V] :=
+  finrank 𝔽₂ (C0 G)
+
+noncomputable def dimC1 (G : FinGraph) [Fintype G.E] :=
+  finrank 𝔽₂ (C1 G)
+
+theorem dimC0_eq_card (G : FinGraph) [Fintype G.V] :
+    dimC0 G = Fintype.card G.V := by
+  simp [dimC0, C0]
+
+theorem dimC1_eq_card (G : FinGraph) [Fintype G.E] :
+    dimC1 G = Fintype.card G.E := by
+  simp [dimC1, C1]
+
+theorem dimZ1_eq_dimC1_sub_rank
+    (G : FinGraph)
+    [Fintype G.V] [Fintype G.E] :
+    dimZ1 G = dimC1 G - finrank 𝔽₂ (LinearMap.range (boundaryMap G)) := by
+  simpa [dimZ1, dimC1, Z1] using LinearMap.finrank_ker_eq_finrank_range_add
+    (boundaryMap G)
+
+theorem beta1_eq_dimZ1
+    (G : FinGraph)
+    [Fintype G.V] [Fintype G.E] :
+    β₁ G = dimZ1 G := by
+  rw [dimZ1_eq_dimC1_sub_rank, dimC1_eq_card]
+  sorry
