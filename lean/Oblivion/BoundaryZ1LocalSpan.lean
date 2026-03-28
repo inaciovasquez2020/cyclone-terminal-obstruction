@@ -80,7 +80,7 @@ def extendEdgeCochain (S : Set G.V) :
 
 def localCycleImage (R : Nat) (v : G.V) : Submodule F2 G.ECochain :=
   Submodule.map (extendEdgeCochain G (ballVertices G v R))
-    ((inducedSubgraph G (ballVertices G v R)).Z1)
+    ((FGraph.Z1 (inducedSubgraph G (ballVertices G v R))))
 
 def localSpan (k R : Nat) : Submodule F2 G.ECochain :=
   ⨆ v : G.V, localCycleImage G R v
