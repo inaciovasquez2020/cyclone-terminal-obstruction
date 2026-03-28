@@ -7,3 +7,4 @@ import Cyclone.CycleRank
 import Cyclone.LiftUniqueness
 import Cyclone.EFAdjacency
 import Cyclone.RootedBallAdj
+import Cyclone.EFRadius
