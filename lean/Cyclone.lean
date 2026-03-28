@@ -5,3 +5,4 @@ import Cyclone.Ball
 import Cyclone.EFDuplicator
 import Cyclone.CycleRank
 import Cyclone.LiftUniqueness
+import Cyclone.EFAdjacency
