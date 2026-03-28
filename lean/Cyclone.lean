@@ -4,3 +4,4 @@ import Cyclone.TreeBall
 import Cyclone.Ball
 import Cyclone.EFDuplicator
 import Cyclone.CycleRank
+import Cyclone.LiftUniqueness
