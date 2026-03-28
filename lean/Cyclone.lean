@@ -12,3 +12,4 @@ import Cyclone.FOEquiv
 import Cyclone.ExplicitWitness
 import Cyclone.CycleRankWitness
 import Cyclone.BoundaryF2
+import Cyclone.IncidenceMatrix
