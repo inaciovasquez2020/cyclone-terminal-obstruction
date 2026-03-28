@@ -9,3 +9,4 @@ import Cyclone.EFAdjacency
 import Cyclone.RootedBallAdj
 import Cyclone.EFRadius
 import Cyclone.FOEquiv
+import Cyclone.ExplicitWitness
