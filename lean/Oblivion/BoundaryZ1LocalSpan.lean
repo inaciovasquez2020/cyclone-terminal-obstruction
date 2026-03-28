@@ -86,3 +86,41 @@ def localSpan (k R : Nat) : Submodule F2 G.ECochain :=
   ⨆ v : G.V, localCycleImage G R v
 
 end FGraph
+
+-- ============================================================
+-- Step 1: vertexParity matches boundary1 exactly
+-- ============================================================
+
+def vertexParity (G : FGraph) (ω : G.ECochain) (v : G.V) : F2 :=
+  ∑ e : G.E,
+    (if G.src e = v then ω e else 0) +
+    (if G.dst e = v then ω e else 0)
+
+-- ============================================================
+-- Step 2: mem_Z1_iff_vertexParity_zero
+-- ============================================================
+
+theorem mem_Z1_iff_vertexParity_zero (G : FGraph) (ω : G.ECochain) :
+    ω ∈ FGraph.Z1 G ↔ ∀ v : G.V, vertexParity G ω v = 0 := by
+  simp only [FGraph.Z1, LinearMap.mem_ker, FGraph.boundary1,
+             LinearMap.mk_apply, vertexParity]
+  constructor
+  · intro h v; exact congr_fun h v
+  · intro h; funext v; exact h v
+
+-- ============================================================
+-- Step 3: ωCycle — the all-ones cochain on G1
+-- ============================================================
+
+def ωCycle : G1.ECochain := fun _ => 1
+
+-- ============================================================
+-- Step 4: omega_closed via parity
+-- ============================================================
+
+theorem omega_closed : ωCycle ∈ FGraph.Z1 G1 := by
+  rw [mem_Z1_iff_vertexParity_zero]
+  intro v
+  simp [vertexParity]
+  admit
+
