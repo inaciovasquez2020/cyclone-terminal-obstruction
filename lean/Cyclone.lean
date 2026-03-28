@@ -8,3 +8,4 @@ import Cyclone.LiftUniqueness
 import Cyclone.EFAdjacency
 import Cyclone.RootedBallAdj
 import Cyclone.EFRadius
+import Cyclone.FOEquiv
