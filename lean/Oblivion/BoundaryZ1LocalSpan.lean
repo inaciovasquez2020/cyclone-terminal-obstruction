@@ -122,5 +122,5 @@ theorem omega_closed : ωCycle ∈ FGraph.Z1 G1 := by
   rw [mem_Z1_iff_vertexParity_zero]
   intro v
   simp [vertexParity]
-  admit
+  have hdeg : (∑ e : G1.E, (if G1.src e = v then (1:F2) else 0) + (if G1.dst e = v then (1:F2) else 0)) = 0 := by admit; exact hdeg
 
