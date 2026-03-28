@@ -10,3 +10,4 @@ import Cyclone.RootedBallAdj
 import Cyclone.EFRadius
 import Cyclone.FOEquiv
 import Cyclone.ExplicitWitness
+import Cyclone.CycleRankWitness
