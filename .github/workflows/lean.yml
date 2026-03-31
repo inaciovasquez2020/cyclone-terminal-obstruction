@@ -1,0 +1,23 @@
+name: Lean CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lean
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: false
+
+      - name: Lake cache
+        run: lake exe cache get || true
+
+      - name: Build
+        run: lake build
