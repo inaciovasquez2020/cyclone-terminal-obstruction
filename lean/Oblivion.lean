@@ -25,3 +25,5 @@ import Oblivion.CycloneBoundaryClosure
 import Oblivion.CycloneEndpointCancellation
 
 import Oblivion.CycloneSimpClosure
+import Chronos.SHChronosKernel
+end
