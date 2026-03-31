@@ -12,3 +12,6 @@ overlap-rigidity-*/
 phase-transition-pnp*/
 yang-mills-hs-gap-cert/
 /.lake
+BUILD_LOG.txt
+TRAFFIC_REPORT.txt
+tmp
