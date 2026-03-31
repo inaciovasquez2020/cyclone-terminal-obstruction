@@ -17,7 +17,6 @@ jobs:
           use-mathlib-cache: false
 
       - name: Lake cache
-        run: lake exe cache get || true
 
       - name: Build
         run: lake build
