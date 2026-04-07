@@ -5,7 +5,7 @@ open scoped BigOperators
 
 namespace Cyclone
 
-variable {α : Type*} [Fintype α] [Nontrivial α]
+variable {α : Type*} [Fintype α]
 
 def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
   ((Finset.univ.product Finset.univ).sum fun xy =>
@@ -25,7 +25,7 @@ def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
     ∃ f : α → ℝ,
       admissible f ∧ edgeEnergy Adj f = r}
 
-axiom admissible_exists :
+axiom admissible_exists [Nontrivial α] :
   ∃ f : α → ℝ, admissible f
 
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
