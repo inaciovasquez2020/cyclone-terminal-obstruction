@@ -5,7 +5,7 @@ open scoped BigOperators
 
 namespace Cyclone
 
-variable {α : Type*} [Fintype α]
+variable {α : Type*} [Fintype α] [Nontrivial α]
 
 def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
   ((Finset.univ.product Finset.univ).sum fun xy =>
