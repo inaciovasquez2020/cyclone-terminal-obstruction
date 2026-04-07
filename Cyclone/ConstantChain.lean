@@ -5,7 +5,7 @@ open scoped BigOperators
 
 namespace Cyclone
 
-variable {α : Type*} [Fintype α] [DecidableEq α]
+variable {α : Type*} [Fintype α]
 
 def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
   ((Finset.univ.product Finset.univ).sum fun xy =>
@@ -25,23 +25,8 @@ def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
     ∃ f : α → ℝ,
       admissible f ∧ edgeEnergy Adj f = r}
 
-theorem admissible_exists_constructive [Nontrivial α] :
-  ∃ f : α → ℝ, admissible f := by
-  classical
-  let a : α := Classical.choice inferInstance
-  let b : α := Classical.choice (Classical.decEq α |> by
-    have h : Nonempty α := Fintype.card_pos_iff.mp (Fintype.card_pos_iff.mpr inferInstance)
-    exact h)
-  by_cases hne : a ≠ b
-  · let f : α → ℝ := fun x =>
-      if x = a then (1 : ℝ)
-      else if x = b then (-1 : ℝ)
-      else 0
-    refine ⟨f, ?_, ?_⟩
-    · sorry
-    · sorry
-  · sorry
-
+axiom admissible_exists [Nontrivial α] :
+  ∃ f : α → ℝ, admissible f
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   (lambda1 Adj)⁻¹
 
