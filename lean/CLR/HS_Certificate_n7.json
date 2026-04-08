@@ -1,13 +1,15 @@
 {
-  "project": "Cyclone-Terminal-Obstruction",
-  "orcid": "0009-0008-8459-3400",
-  "component": "CLR-Structural-Stability",
-  "bound_n": 7,
-  "coercivity_logic": "HS-Transfer-v2",
-  "witness": {
-    "lower_bound": 0.14285714285,
+  "project": "cyclone-terminal-obstruction",
+  "component": "HSCoercivityTransfer",
+  "parameters": {
+    "n_max": 7,
     "rigidity_factor": "1/n",
-    "structural_closure": true
+    "manifold_type": "VanishingEdge"
   },
-  "status": "ALPHA-VERIFIED"
+  "witness": {
+    "coercivity_bound": 0.14285714285,
+    "structural_closure": true,
+    "timestamp": "2026-04-07T23:24:00Z"
+  },
+  "signature_stub": "signed_by_inacio_f_vasquez_orcid_0009-0008-8459-3400"
 }
