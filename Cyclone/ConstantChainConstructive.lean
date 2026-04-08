@@ -15,7 +15,7 @@ private lemma sum_two_point {α : Type*} [Fintype α] [DecidableEq α]
     by_cases hzx : z = x
     · simp [hzx, hne]
     · by_cases hzy : z = y
-      · simp [hzx, hzy, Ne.symm hne]
+      · simp [hzy, Ne.symm hne]
       · simp [hzx, hzy]
   simp_rw [hsplit, Finset.sum_add_distrib,
            Finset.sum_ite_eq', Finset.mem_univ, if_true]
@@ -42,7 +42,7 @@ theorem admissible_exists_constructive
       by_cases hzx : z = x
       · simp [hzx, hne]
       · by_cases hzy : z = y
-        · simp [hzx, hzy, Ne.symm hne]
+        · simp [hzy, Ne.symm hne]
         · simp [hzx, hzy]
     simp_rw [hsq, Finset.sum_add_distrib,
              Finset.sum_ite_eq', Finset.mem_univ, if_true]
