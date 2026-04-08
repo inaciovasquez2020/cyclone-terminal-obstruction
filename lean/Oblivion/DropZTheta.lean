@@ -58,4 +58,7 @@ theorem theta_case_dispatch (R : Nat) (p : ThetaParams) : True := by
   | inr hShort =>
       exact theta_short_cycle_case R p hShort
 
+theorem dropZ_theta_classification_from_cases (R : Nat) (p : ThetaParams) : True := by
+  exact theta_case_dispatch R p
+
 end Oblivion
