@@ -1,5 +1,4 @@
 import Mathlib.Data.Matrix.Basic
-import Mathlib.LinearAlgebra.Matrix.Determinant
 import Mathlib.Data.ZMod.Basic
 import Mathlib.Data.Finset.Basic
 
