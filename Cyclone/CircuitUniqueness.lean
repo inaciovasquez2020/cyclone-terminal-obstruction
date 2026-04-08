@@ -1,29 +1,33 @@
-import Mathlib.Data.Matrix.Basic
-import Mathlib.Data.ZMod.Basic
-import Mathlib.Data.Finset.Basic
+import Mathlib
 
 open scoped BigOperators
 
+namespace Cyclone
+
 def GLEquiv {n r : Nat} (A B : Matrix (Fin r) (Fin n) (ZMod 2)) : Prop :=
   ∃ (P : Matrix (Fin r) (Fin r) (ZMod 2)) (σ : Equiv.Perm (Fin n)),
-    True ∧ B = P * (A.submatrix id σ)
+    IsUnit (Matrix.det P) ∧ B = P * (A.submatrix id σ)
 
 def CircuitSupport (n : Nat) := Finset (Fin n)
 
 def PermEquivSupport {n : Nat} (S T : CircuitSupport n) : Prop :=
   ∃ σ : Equiv.Perm (Fin n), T = S.map σ.toEmbedding
 
-def SizeKPlusOne {n k : Nat} (S : CircuitSupport n) : Prop := S.card = k + 1
+def SizeKPlusOne {n k : Nat} (S : CircuitSupport n) : Prop :=
+  S.card = k + 1
 
 def BinaryMatroidCircuit {n r : Nat}
-    (_A : Matrix (Fin r) (Fin n) (ZMod 2)) (_S : CircuitSupport n) : Prop := True
+    (A : Matrix (Fin r) (Fin n) (ZMod 2)) (S : CircuitSupport n) : Prop :=
+  True
 
 axiom circuit_uniqueness_size_k_plus_one
     {n r k : Nat}
-    (_A : Matrix (Fin r) (Fin n) (ZMod 2))
+    (A : Matrix (Fin r) (Fin n) (ZMod 2))
     (S T : CircuitSupport n)
-    (_h1 : BinaryMatroidCircuit _A S)
-    (_h2 : BinaryMatroidCircuit _A T)
+    (h1 : BinaryMatroidCircuit A S)
+    (h2 : BinaryMatroidCircuit A T)
     (hS : SizeKPlusOne (k := k) S)
     (hT : SizeKPlusOne (k := k) T) :
     PermEquivSupport S T
+
+end Cyclone
