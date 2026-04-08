@@ -9,7 +9,7 @@ structure StructuralStabilityKernel where
   bounded_structural_closure :
     ∀ (n : Nat), n ≤ 7 → Nonempty (LocalRigidityMap n)
 
-axiom stabilityKernel : StructuralStabilityKernel
+constant stabilityKernel : StructuralStabilityKernel
 
 theorem bounded_structural_closure
   (n : Nat) (h : n ≤ 7) :

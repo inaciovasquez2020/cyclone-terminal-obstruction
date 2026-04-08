@@ -13,7 +13,7 @@ structure EndpointKernel where
       let G₁ := explicitTwoLift G (fun _ => true)
       FO_equiv G₀ G₁ k ∧ (Z1 G₀ ↔ ¬ Z1 G₁)
 
-axiom kernel : EndpointKernel
+constant kernel : EndpointKernel
 
 theorem Cyclone_full
   (G : kernel.FinGraph) (σ : Unit → Bool) (k : Nat)

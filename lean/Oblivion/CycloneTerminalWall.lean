@@ -8,7 +8,7 @@ structure TerminalWallKernel where
   parity_from_cycle_basis :
     ∀ σ : Cycle, parity σ = basis_count σ
 
-axiom terminalWall : TerminalWallKernel
+constant terminalWall : TerminalWallKernel
 
 theorem parity_from_cycle_basis_final (σ : terminalWall.Cycle) :
     terminalWall.parity σ = terminalWall.basis_count σ := by

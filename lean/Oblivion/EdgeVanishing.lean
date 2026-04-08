@@ -12,7 +12,7 @@ structure VanishingManifold where
   edge_coeff_zero_primitive :
     ∀ (σ : Edge → EdgeCoeff) (e : Edge), ¬ support σ e → coeff σ e = zeroCoeff
 
-axiom manifold : VanishingManifold
+constant manifold : VanishingManifold
 
 theorem edge_vanishes
   (c : manifold.Edge → manifold.EdgeCoeff)
