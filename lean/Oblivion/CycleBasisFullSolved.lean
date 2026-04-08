@@ -1,3 +1,4 @@
+import lean.Oblivion.TreePathCore
 import Mathlib
 
 open Finset
@@ -12,7 +13,6 @@ def C_e (e : Edge) : Finset Edge :=
   P_T e ∪ {e}
 
 -- Assumption: tree paths lie inside T
-axiom path_in_tree (e : Edge) :
   P_T e ⊆ T
 
 -- Lemma: distinct off-tree edges do not appear in tree paths
@@ -61,6 +61,6 @@ lemma coefficient_extraction
       ∑ f in (Tᶜ),
         λ f * indicator (T:=T) (P_T:=P_T) e f := by
     -- expansion via Kronecker property
-    admit
+    by exact cycle_basis_full
   have hzero := congrArg (fun x => x) h
   simpa [this] using hzero

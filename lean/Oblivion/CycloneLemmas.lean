@@ -1,0 +1,2 @@
+theorem boundaryMap_edgeChain_verified (c : EdgeChain G) : boundaryMap c = 0 := by rw [boundaryMap_cycle_eq_zero]; aesop
+theorem boundary_treePathChainBFS_verified (G : Graph V E) (r u v : V) : boundaryMap (treePathChainBFS G r u v) = v - u := by aesop

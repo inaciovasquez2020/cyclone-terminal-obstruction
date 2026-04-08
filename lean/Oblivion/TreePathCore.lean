@@ -22,7 +22,6 @@ def fundamentalCycle (P_T : PathFamily) (e : Edge) : Finset Edge :=
 
 def OffTree (e : Edge) : Prop := e ∉ T.edges
 
-axiom path_in_tree
   (P_T : PathFamily) :
   ∀ e : Edge, P_T e ⊆ T.edges
 

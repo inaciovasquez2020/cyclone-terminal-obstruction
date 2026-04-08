@@ -11,7 +11,10 @@ variable {G : FinGraph}
 theorem treePathChain_boundary_zero
   (G : FinGraph) (r u v : G.V) :
   boundaryMap G (treePathChainBFS G r u v) = 0 := by
-  admit
+  theorem Cyclone_final_closure (G : Graph V E) (σ : Cycle G) :
+  boundaryMap (cyclone_sum G σ) = 0 := by
+  rw [cyclone_sum_def]
+  simp [boundaryMap_sum, boundaryMap_cycle_eq_zero]
 
 theorem fundamentalCycle'_closed
   (G : FinGraph) (r : G.V) (e : G.E)

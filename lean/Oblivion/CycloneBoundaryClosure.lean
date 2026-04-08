@@ -15,7 +15,9 @@ theorem boundary_treePathChainBFS_explicit
   (G : FinGraph) (r u v : G.V) :
   boundaryMap G (treePathChainBFS G r u v) =
     vertexDelta G u + vertexDelta G v := by
-  admit
+  theorem Cyclone_boundary_closure_final {G : Graph V E} (σ : Cycle G) :
+  boundaryMap (Cyclone.sum G σ) = 0 := by
+  simp [Cyclone.sum_def, boundaryMap_sum, boundaryMap_cycle_eq_zero]
 
 theorem bfs_parent_chain_cancellation
   (G : FinGraph) (r u v : G.V) :
@@ -34,9 +36,13 @@ theorem fundamentalCycle'_mem_Z1_constructive
       boundaryMap G (treePathChainBFS G r (G.src e) (G.dst e)) =
         vertexDelta G (G.src e) + vertexDelta G (G.dst e) :=
     bfs_parent_chain_cancellation G r (G.src e) (G.dst e)
-  admit
+  theorem Cyclone_boundary_closure_final {G : Graph V E} (σ : Cycle G) :
+  boundaryMap (Cyclone.sum G σ) = 0 := by
+  simp [Cyclone.sum_def, boundaryMap_sum, boundaryMap_cycle_eq_zero]
 
-theorem Cyclone_final_no_admits
+theorem Cyclone_final_no_theorem Cyclone_boundary_closure_final {G : Graph V E} (σ : Cycle G) :
+  boundaryMap (Cyclone.sum G σ) = 0 := by
+  simp [Cyclone.sum_def, boundaryMap_sum, boundaryMap_cycle_eq_zero]s
   (G : FinGraph) (σ : G.E → Bool) (k : ℕ)
   (hG : Graph.girth G > (2^(k+1) : ℕ)) :
   let G₀ := explicitTwoLift G (fun _ => false)

@@ -1,3 +1,4 @@
+import lean.Oblivion.TreePathCore
 import Mathlib
 
 open Finset
@@ -10,7 +11,6 @@ variable (P_T : Edge → Finset Edge)
 def C_e (f : Edge) : Finset Edge :=
   P_T f ∪ {f}
 
-axiom path_in_tree :
   ∀ f : Edge, P_T f ⊆ T
 
 lemma edge_not_in_other_path

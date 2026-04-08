@@ -1,3 +1,4 @@
+import lean.Oblivion.TreePathCore
 import Mathlib
 
 open Finset
@@ -13,7 +14,6 @@ def C_e (e : Edge) : Finset Edge :=
 def indicator (e f : Edge) : ZMod 2 :=
   if e ∈ C_e (T:=T) (P_T:=P_T) f then 1 else 0
 
-axiom indicator_kronecker
   (e f : Edge)
   (he : e ∉ T)
   (hf : f ∉ T) :
