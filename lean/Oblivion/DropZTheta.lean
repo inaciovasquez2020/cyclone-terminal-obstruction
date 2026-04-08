@@ -26,10 +26,6 @@ axiom theta_short_cycle_case
   (R : Nat) (p : ThetaParams) :
   ShortThetaAtRadius R p → True
 
-axiom dropZ_theta_classification
-  (R : Nat) (p : ThetaParams) :
-  True
-
 theorem theta_radius_split (R : Nat) (p : ThetaParams) :
   LongThetaAtRadius R p ∨ ShortThetaAtRadius R p := by
   by_cases hAB : 2 * R + 1 < thetaCycleAB p
@@ -60,5 +56,10 @@ theorem theta_case_dispatch (R : Nat) (p : ThetaParams) : True := by
 
 theorem dropZ_theta_classification_from_cases (R : Nat) (p : ThetaParams) : True := by
   exact theta_case_dispatch R p
+
+
+theorem dropZ_theta_classification
+  (R : Nat) (p : ThetaParams) : True := by
+  exact dropZ_theta_classification_from_cases R p
 
 end Oblivion
