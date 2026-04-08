@@ -9,3 +9,7 @@ require mathlib from git
 
 @[default_target]
 lean_lib CycloneTerminalObstruction
+
+lean_lib Cyclone where
+  roots := #[`Cyclone]
+
