@@ -17,7 +17,7 @@ def SizeKPlusOne {n k : Nat} (S : CircuitSupport n) : Prop :=
   S.card = k + 1
 
 def BinaryMatroidCircuit {n r : Nat}
-    (A : Matrix (Fin r) (Fin n) (ZMod 2)) (S : CircuitSupport n) : Prop :=
+    (_A : Matrix (Fin r) (Fin n) (ZMod 2)) (_S : CircuitSupport n) : Prop :=
   True
 
 axiom circuit_uniqueness_size_k_plus_one
