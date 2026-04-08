@@ -19,16 +19,16 @@ axiom theta_local_cycle_vanishes
   (R : Nat) (p : ThetaParams) :
   LongThetaAtRadius R p → True
 
+def ShortThetaAtRadius (R : Nat) (p : ThetaParams) : Prop :=
+  thetaCycleAB p ≤ 2 * R + 1 ∨ thetaCycleAC p ≤ 2 * R + 1 ∨ thetaCycleBC p ≤ 2 * R + 1
+
 axiom theta_short_cycle_case
   (R : Nat) (p : ThetaParams) :
-  thetaCycleAB p ≤ 2 * R + 1 ∨ thetaCycleAC p ≤ 2 * R + 1 ∨ thetaCycleBC p ≤ 2 * R + 1 → True
+  ShortThetaAtRadius R p → True
 
 axiom dropZ_theta_classification
   (R : Nat) (p : ThetaParams) :
   True
-
-def ShortThetaAtRadius (R : Nat) (p : ThetaParams) : Prop :=
-  thetaCycleAB p ≤ 2 * R + 1 ∨ thetaCycleAC p ≤ 2 * R + 1 ∨ thetaCycleBC p ≤ 2 * R + 1
 
 axiom dropZ_theta_long_value
   (R : Nat) (p : ThetaParams) :
