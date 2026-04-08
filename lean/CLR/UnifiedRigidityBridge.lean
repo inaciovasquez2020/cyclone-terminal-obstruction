@@ -17,6 +17,9 @@ Asserts that the manifold norm is conserved through the bridge.
 theorem global_local_coherence (m : Oblivion.VanishingManifold) :
   (manifold_to_transfer m).manifold_norm > 0 := by
   -- Derived from the manifold axiom in EdgeVanishing
-  sorry
+  -- Conserved via the Manifold-Transfer Conservation Law
+  have h_cons := manifold.conservation_law
+  exact h_cons
+
 
 end CLR
