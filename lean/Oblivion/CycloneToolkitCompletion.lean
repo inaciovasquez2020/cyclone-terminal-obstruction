@@ -11,7 +11,7 @@ structure ToolkitKernel where
 
 axiom toolkit : ToolkitKernel
 
-theorem cyclone_separation :
+theorem cyclone_separation_result :
   ∃ G₀ G₁ : toolkit.Graph,
     (∃ k : Nat, toolkit.FO_equiv G₀ G₁ k) ∧
     (toolkit.Z1 G₀ ↔ ¬ toolkit.Z1 G₁) := by
