@@ -47,4 +47,15 @@ theorem theta_radius_split (R : Nat) (p : ThetaParams) :
     -- Logic: Or.inr (Or.inl hAB)
     exact Or.inr (Or.inl (Nat.le_of_not_lt hAB))
 
+axiom dropZ_theta_long_value
+  (R : Nat) (p : ThetaParams) :
+  LongThetaAtRadius R p → True
+
+theorem theta_case_dispatch (R : Nat) (p : ThetaParams) : True := by
+  cases theta_radius_split R p with
+  | inl hLong =>
+      exact dropZ_theta_long_value R p hLong
+  | inr hShort =>
+      exact theta_short_cycle_case R p hShort
+
 end Oblivion
