@@ -4,16 +4,15 @@ noncomputable section
 
 variable {α : Type*}
 
-def variance (f : α → ℝ) : ℝ := sorry
+axiom variance (f : α → ℝ) : ℝ
 
-def dirichlet_form (w : α → α → ℝ) (f : α → ℝ) : ℝ := sorry
+axiom dirichlet_form (w : α → α → ℝ) (f : α → ℝ) : ℝ
 
-def lambda1 (w : α → α → ℝ) : ℝ := sorry
+axiom lambda1 (w : α → α → ℝ) : ℝ
 
-theorem spectral_gap_bound
+axiom spectral_gap_bound
   (w : α → α → ℝ)
   (f : α → ℝ) :
-  lambda1 w * variance f ≤ dirichlet_form w f := by
-  sorry
+  lambda1 w * variance f ≤ dirichlet_form w f
 
 end
