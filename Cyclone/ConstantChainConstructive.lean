@@ -6,10 +6,10 @@ open scoped BigOperators
 
 namespace Cyclone
 
-private lemma exists_pair_ne (α : Type*) [Fintype α] [Nontrivial α] [DecidableEq α] :
+private lemma exists_pair_ne_local (α : Type*) [Fintype α] [Nontrivial α] [DecidableEq α] :
     ∃ x y : α, x ≠ y := by
   classical
-  simpa [ne_eq, exists_prop] using exists_pair_ne α
+  simpa using (exists_pair_ne α)
 
 -- Helper: sum of a two-point antisymmetric function is zero
 private lemma sum_two_point {α : Type*} [Fintype α] [DecidableEq α]
@@ -30,7 +30,7 @@ theorem admissible_exists_constructive
     {α : Type*} [Fintype α] [Nontrivial α] [DecidableEq α] :
     ∃ f : α → ℝ, admissible f := by
   classical
-  obtain ⟨x, y, hne⟩ := exists_pair_ne α
+  obtain ⟨x, y, hne⟩ := exists_pair_ne_local α
   let c : ℝ := 1 / Real.sqrt 2
   let f : α → ℝ := fun z => if z = x then c else if z = y then -c else 0
   refine ⟨f, ?_, ?_⟩
