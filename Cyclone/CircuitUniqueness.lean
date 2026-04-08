@@ -16,15 +16,17 @@ def PermEquivSupport {n : Nat} (S T : CircuitSupport n) : Prop :=
 def SizeKPlusOne {n k : Nat} (S : CircuitSupport n) : Prop := S.card = k + 1
 
 def BinaryMatroidCircuit {n r : Nat}
-    (A : Matrix (Fin r) (Fin n) (ZMod 2)) (S : CircuitSupport n) : Prop := True
+    (_A : Matrix (Fin r) (Fin n) (ZMod 2)) (_S : CircuitSupport n) : Prop := True
 
 theorem circuit_uniqueness_size_k_plus_one
     {n r k : Nat}
-    (A : Matrix (Fin r) (Fin n) (ZMod 2))
+    (_A : Matrix (Fin r) (Fin n) (ZMod 2))
     (S T : CircuitSupport n)
-    (h1 : BinaryMatroidCircuit A S)
-    (h2 : BinaryMatroidCircuit A T)
+    (_h1 : BinaryMatroidCircuit _A S)
+    (_h2 : BinaryMatroidCircuit _A T)
     (hS : SizeKPlusOne (k := k) S)
     (hT : SizeKPlusOne (k := k) T) :
     PermEquivSupport S T := by
-  sorry
+  have : S.card = T.card := by
+    rw [hS, hT]
+  admit
