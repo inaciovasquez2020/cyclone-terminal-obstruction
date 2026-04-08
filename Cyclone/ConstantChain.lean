@@ -66,15 +66,18 @@ def lambda1 (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
 
 def Cvar (Adj : α → α → Prop) [DecidableRel Adj] : ℝ := (lambda1 Adj)⁻¹
 
+omit [DecidableEq α] in
 theorem Cvar_exact (Adj : α → α → Prop) [DecidableRel Adj] :
     Cvar Adj = (lambda1 Adj)⁻¹ := rfl
 
 def Cprime (Cloc : ℝ) (Adj : α → α → Prop) [DecidableRel Adj] : ℝ :=
   Cloc * (lambda1 Adj)⁻¹
 
+omit [DecidableEq α] in
 theorem Cprime_bound (Cloc : ℝ) (Adj : α → α → Prop) [DecidableRel Adj] :
     Cprime Cloc Adj = Cloc * (lambda1 Adj)⁻¹ := by simp [Cprime]
 
+omit [DecidableEq α] in
 theorem Cprime_sharp_3d (Cloc : ℝ) (Adj : α → α → Prop) [DecidableRel Adj] (_d : Nat) :
     Cprime Cloc Adj = Cloc * (lambda1 Adj)⁻¹ := by simp [Cprime]
 
