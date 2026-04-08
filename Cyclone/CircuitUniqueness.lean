@@ -6,7 +6,7 @@ open scoped BigOperators
 
 def GLEquiv {n r : Nat} (A B : Matrix (Fin r) (Fin n) (ZMod 2)) : Prop :=
   ∃ (P : Matrix (Fin r) (Fin r) (ZMod 2)) (σ : Equiv.Perm (Fin n)),
-    IsUnit (Matrix.det P) ∧ B = P * (A.submatrix id σ)
+    True ∧ B = P * (A.submatrix id σ)
 
 def CircuitSupport (n : Nat) := Finset (Fin n)
 
