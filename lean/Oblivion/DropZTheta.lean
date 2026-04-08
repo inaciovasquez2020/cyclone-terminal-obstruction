@@ -30,8 +30,21 @@ axiom dropZ_theta_classification
   (R : Nat) (p : ThetaParams) :
   True
 
-axiom dropZ_theta_long_value
-  (R : Nat) (p : ThetaParams) :
-  LongThetaAtRadius R p → True
+theorem theta_radius_split (R : Nat) (p : ThetaParams) :
+  LongThetaAtRadius R p ∨ ShortThetaAtRadius R p := by
+  by_cases hAB : 2 * R + 1 < thetaCycleAB p
+  · by_cases hAC : 2 * R + 1 < thetaCycleAC p
+    · by_cases hBC : 2 * R + 1 < thetaCycleBC p
+      · -- Goal: LongThetaAtRadius (All three are > 2R+1)
+        exact Or.inl ⟨hAB, hAC, hBC⟩
+      · -- Goal: ShortThetaAtRadius (AB > 2R+1, AC > 2R+1, BC <= 2R+1)
+        -- Logic: Or.inr (Or.inr hBC)
+        exact Or.inr (Or.inr (Or.inr (Nat.le_of_not_lt hBC)))
+    · -- Goal: ShortThetaAtRadius (AB > 2R+1, AC <= 2R+1)
+      -- Logic: Or.inr (Or.inr (Or.inl hAC))
+      exact Or.inr (Or.inr (Or.inl (Nat.le_of_not_lt hAC)))
+  · -- Goal: ShortThetaAtRadius (AB <= 2R+1)
+    -- Logic: Or.inr (Or.inl hAB)
+    exact Or.inr (Or.inl (Nat.le_of_not_lt hAB))
 
 end Oblivion
