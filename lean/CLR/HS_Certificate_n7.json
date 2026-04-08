@@ -1,0 +1,13 @@
+{
+  "project": "Cyclone-Terminal-Obstruction",
+  "orcid": "0009-0008-8459-3400",
+  "component": "CLR-Structural-Stability",
+  "bound_n": 7,
+  "coercivity_logic": "HS-Transfer-v2",
+  "witness": {
+    "lower_bound": 0.14285714285,
+    "rigidity_factor": "1/n",
+    "structural_closure": true
+  },
+  "status": "ALPHA-VERIFIED"
+}
