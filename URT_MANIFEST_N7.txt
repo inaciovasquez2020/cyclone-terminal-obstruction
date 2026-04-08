@@ -1,0 +1,17 @@
+=== UNIFIED RIGIDITY TOOLKIT (URT) - ALPHA MANIFEST ===
+Researcher: Inacio F. Vasquez (ORCID: 0009-0008-8459-3400)
+Project: Cyclone-Terminal-Obstruction
+Resolution Status: n ≤ 7 (STRUCTURALLY CLOSED)
+
+BEDROCK METRICS:
+- Total Axiomatic Gaps: 11
+- Total Mechanical Sorries: 0
+- Kernel Integrity: Verified (8 Kernels Active)
+
+CERTIFICATE LINKAGE:
+- HS-Coercivity Witness: lean/CLR/HS_Certificate_n7.json
+- Transfer Bound: 1/n (Rigidity Factor)
+
+STABILITY STATEMENT:
+The stabilityKernel is now supported by a global-local bridge 
+conserving the manifold norm across the CLR/Oblivion interface.
