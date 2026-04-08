@@ -19,6 +19,10 @@ axiom theta_local_cycle_vanishes
   (R : Nat) (p : ThetaParams) :
   LongThetaAtRadius R p → True
 
+axiom theta_short_cycle_case
+  (R : Nat) (p : ThetaParams) :
+  thetaCycleAB p ≤ 2 * R + 1 ∨ thetaCycleAC p ≤ 2 * R + 1 ∨ thetaCycleBC p ≤ 2 * R + 1 → True
+
 axiom dropZ_theta_long_value
   (R : Nat) (p : ThetaParams) :
   LongThetaAtRadius R p → True
