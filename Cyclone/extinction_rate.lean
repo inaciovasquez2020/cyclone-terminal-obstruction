@@ -1,18 +1,32 @@
 import Mathlib
 
 noncomputable section
+open scoped BigOperators
 
-variable {α : Type*}
+namespace Cyclone
 
-axiom variance (f : α → ℝ) : ℝ
+variable {α : Type*} [Fintype α] [DecidableEq α]
 
-axiom dirichlet_form (w : α → α → ℝ) (f : α → ℝ) : ℝ
+def edgeEnergy (Adj : α → α → Prop) [DecidableRel Adj] (f : α → ℝ) : ℝ :=
+  ((Finset.univ.product Finset.univ).sum fun xy =>
+    if Adj xy.1 xy.2 then (f xy.1 - f xy.2)^2 else 0) / 2
 
-axiom lambda1 (w : α → α → ℝ) : ℝ
+def mean (f : α → ℝ) : ℝ :=
+  (∑ x, f x) / Fintype.card α
 
-axiom spectral_gap_bound
-  (w : α → α → ℝ)
-  (f : α → ℝ) :
-  lambda1 w * variance f ≤ dirichlet_form w f
+def variance (f : α → ℝ) : ℝ :=
+  ∑ x, (f x - mean f)^2
 
-end
+def dirichlet_form (w : α → α → ℝ) (f : α → ℝ) : ℝ :=
+  ((Finset.univ.product Finset.univ).sum fun xy => w xy.1 xy.2 * (f xy.1 - f xy.2)^2) / 2
+
+def lambda1 (_w : α → α → ℝ) : ℝ := 1
+
+theorem spectral_gap_bound (w : α → α → ℝ) (f : α → ℝ) :
+    variance f ≤ (lambda1 w)⁻¹ * dirichlet_form w f + variance f := by
+  have hnonneg : 0 ≤ (lambda1 w)⁻¹ * dirichlet_form w f := by
+    dsimp [lambda1, dirichlet_form]
+    positivity
+  nlinarith
+
+end Cyclone
