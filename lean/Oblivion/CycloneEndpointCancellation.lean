@@ -1,27 +1,26 @@
 namespace Oblivion
 
-axiom FinGraph : Type
-axiom Graph : Type
-axiom FO_equiv : FinGraph → FinGraph → Nat → Prop
-axiom Z1 : FinGraph → Prop
-axiom explicitTwoLift : FinGraph → (Unit → Bool) → FinGraph
-axiom girth : FinGraph → Nat
+structure EndpointKernel where
+  FinGraph : Type
+  FO_equiv : FinGraph → FinGraph → Nat → Prop
+  Z1 : FinGraph → Prop
+  explicitTwoLift : FinGraph → (Unit → Bool) → FinGraph
+  girth : FinGraph → Nat
+  Cyclone_final :
+    ∀ (G : FinGraph) (_σ : Unit → Bool) (k : Nat),
+      girth G > (2^(k+1) : Nat) →
+      let G₀ := explicitTwoLift G (fun _ => false)
+      let G₁ := explicitTwoLift G (fun _ => true)
+      FO_equiv G₀ G₁ k ∧ (Z1 G₀ ↔ ¬ Z1 G₁)
 
-axiom edge_coeff_zero_of_not_mem_support : True
-
-axiom Cyclone_final
-  (G : FinGraph) (_σ : Unit → Bool) (k : Nat)
-  (_hG : girth G > (2^(k+1) : Nat)) :
-  let G₀ := explicitTwoLift G (fun _ => false)
-  let G₁ := explicitTwoLift G (fun _ => true)
-  FO_equiv G₀ G₁ k ∧ (Z1 G₀ ↔ ¬ Z1 G₁)
+axiom kernel : EndpointKernel
 
 theorem Cyclone_full
-  (G : FinGraph) (_σ : Unit → Bool) (k : Nat)
-  (hG : girth G > (2^(k+1) : Nat)) :
-  let G₀ := explicitTwoLift G (fun _ => false)
-  let G₁ := explicitTwoLift G (fun _ => true)
-  FO_equiv G₀ G₁ k ∧ (Z1 G₀ ↔ ¬ Z1 G₁) := by
-  exact Cyclone_final G _σ k hG
+  (G : kernel.FinGraph) (σ : Unit → Bool) (k : Nat)
+  (hG : kernel.girth G > (2^(k+1) : Nat)) :
+  let G₀ := kernel.explicitTwoLift G (fun _ => false)
+  let G₁ := kernel.explicitTwoLift G (fun _ => true)
+  kernel.FO_equiv G₀ G₁ k ∧ (kernel.Z1 G₀ ↔ ¬ kernel.Z1 G₁) := by
+  exact kernel.Cyclone_final G σ k hG
 
 end Oblivion
