@@ -5,6 +5,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 STATUS_DOC = ROOT / "docs/status/ADMIT_INVENTORY_2026_04_27.md"
+FORMAL_DOC = ROOT / "docs/status/FORMAL_STATUS_2026_04_27.md"
 
 def lean_files():
     return [
@@ -45,7 +46,12 @@ def main() -> int:
         print(f"missing status document: {STATUS_DOC.relative_to(ROOT)}")
         return 1
 
+    if not FORMAL_DOC.exists():
+        print(f"missing formal status document: {FORMAL_DOC.relative_to(ROOT)}")
+        return 1
+
     text = STATUS_DOC.read_text(encoding="utf-8", errors="ignore")
+    formal_text = FORMAL_DOC.read_text(encoding="utf-8", errors="ignore")
     admit_count = count_pattern(r"\badmit\b")
 
     required = [
@@ -61,6 +67,18 @@ def main() -> int:
             print(f"missing: {s}")
         return 1
 
+    formal_required = [
+        "Status: Admitted Frontier / Not Verified",
+        "The repository builds, but build success is not theorem verification.",
+        "If `sorry + admit + axiom > 0`, no theorem-closure claim is allowed.",
+    ]
+    formal_missing = [s for s in formal_required if s not in formal_text]
+    if formal_missing:
+        print("formal theorem-status boundary check failed")
+        for s in formal_missing:
+            print(f"missing: {s}")
+        return 1
+
     misleading = misleading_zero_sorry_claims()
     if admit_count > 0 and misleading:
         print("misleading zero-sorry claims remain while admits exist")
@@ -72,6 +90,7 @@ def main() -> int:
         "status": "PASS",
         "admit_count": admit_count,
         "status_doc": str(STATUS_DOC.relative_to(ROOT)),
+        "formal_status_doc": str(FORMAL_DOC.relative_to(ROOT)),
         "misleading_zero_sorry_claims": 0,
     })
     return 0
