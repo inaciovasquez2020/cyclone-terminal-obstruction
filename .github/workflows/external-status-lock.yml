@@ -1,0 +1,13 @@
+name: external-status-lock
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  external-status-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify external status lock
+        run: python3 scripts/verify_external_status_lock.py
