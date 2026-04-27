@@ -26,7 +26,7 @@ def invariant_beta1(G):
     return G.number_of_edges() - G.number_of_nodes() + nx.number_connected_components(G)
 
 def test_cycle_parity_lift():
-    base = nx.cycle_graph(10)
+    base = nx.cycle_graph(9)
     G1 = random_lift(base, flip_prob=0.0)
     G2 = random_lift(base, flip_prob=1.0)
 
