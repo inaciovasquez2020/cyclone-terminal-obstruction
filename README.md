@@ -19,3 +19,7 @@ Current status:
 - Strongest verified theorem: none asserted at repository level
 - Weakest missing theorem: discharge or quarantine every admitted proof obligation
 - Frontier inventory: `docs/status/ADMIT_INVENTORY_2026_04_27.md`
+
+## External status
+
+This repository is governed by [`docs/status/EXTERNAL_STATUS_LOCK.md`](docs/status/EXTERNAL_STATUS_LOCK.md). Build success, CI success, dashboards, ledgers, axioms, admits, `sorry`, or placeholder witnesses do not constitute theorem-level closure.
